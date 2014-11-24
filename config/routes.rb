@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'teachers/index'
+
+  get 'teachers/new'
+
+  get 'teachers/create'
+
+  get 'teachers/show'
+
+  get 'teachers/edit'
+
+  get 'teachers/update'
+
+  get 'teachers/destroy'
+
   get 'schools/index'
 
   get 'schools/show'
@@ -12,6 +26,8 @@ Rails.application.routes.draw do
   get 'schools/edit'
 
   get 'schools/update'
+
+  root to: "school#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
