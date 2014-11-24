@@ -1,32 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :teachers
-  get 'teachers/index'
 
-  get 'teachers/new'
+  resources :schools do
+    resources :teachers
+  end
 
-  get 'teachers/create'
-
-  get 'teachers/show'
-
-  get 'teachers/edit'
-
-  get 'teachers/update'
-
-  get 'teachers/destroy'
-
-  get 'schools/index'
-
-  get 'schools/show'
-
-  get 'schools/new'
-
-  get 'schools/create'
-
-  get 'schools/destroy'
-
-  get 'schools/edit'
-
-  get 'schools/update'
 
   root to: "school#index"
 
