@@ -18,19 +18,23 @@ class SchoolsController < ApplicationController
   end
 
   def destroy
+    @school.destroy
+    redirect_to schools_path
   end
 
   def edit
   end
 
   def update
+    @school.update(school_params)
+    redirect_to schools_path
   end
 
   private
 
   private
     def set_school
-      @school = school.find(params[:id])
+      @school = School.find(params[:id])
     end
 
     def school_params
