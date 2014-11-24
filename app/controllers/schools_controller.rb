@@ -12,9 +12,9 @@ class SchoolsController < ApplicationController
   end
 
   def create
-    @school = current_user.my_schools.new(school_params)
+    @school = School.new(school_params)
     @school.save
-    respond_with(@school)
+    redirect_to schools_path
   end
 
   def destroy
