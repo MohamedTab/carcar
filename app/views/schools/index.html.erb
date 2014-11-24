@@ -1,1 +1,5 @@
-<%= @schools.name %>
+<% @schools.each do |school| %>
+<div>
+  <%= school.name %>
+  </div>
+  <% end %>
