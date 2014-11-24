@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :teachers
 
-  resources :schools do
-    resources :teachers
-  end
+  resources :schools
+  resources :teachers
 
 
-  root to: "school#index"
+
+
+  root to: "schools#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
