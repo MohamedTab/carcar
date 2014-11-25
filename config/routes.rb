@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :teachers
 
-  resources :schools
+  resources :schools do
+    get '/teachers' => 'schools#add_teachers', as: :add_contract
+    post '/teachers' => 'schools#create_contract', as: :create_contract
+  end
   resources :teachers
 
 

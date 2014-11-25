@@ -1,0 +1,21 @@
+<h1>Schools#show</h1>
+
+
+<h2> choisissez vos moniteurs <h2>
+
+<%= form_tag(school_create_contract_path  ) do %>
+<% @teachers.each do |teacher| %>
+    <div class="form-group">
+      <div class="field">
+        <%= label_tag 'teachers[]', teacher.name   %><br>
+        <%= check_box_tag 'teachers[]', teacher.id, :class => "form-control" %>
+      </div>
+    </div>
+  <% end %>
+    <button type="submit" class="btn btn-default">
+      <div class="actions">
+        <%= submit_tag %>
+      </div>
+    </button>
+
+<% end %>
