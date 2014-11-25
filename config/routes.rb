@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get '/teachers' => 'schools#add_teachers', as: :add_contract
     post '/teachers' => 'schools#create_contract', as: :create_contract
   end
-  resources :teachers
+  resources :teachers, execpt: [:new, :create, :edit, :update]
 
 
 

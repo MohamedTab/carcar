@@ -4,10 +4,6 @@ class TeachersController < ApplicationController
     @teachers = Teacher.all
   end
 
-  def new
-    @teacher = Teacher.new
-  end
-
   def create
     @school = School.find(params[:school_id])
     @teacher = @school.teacher.new(params[:teacher])
@@ -16,9 +12,6 @@ class TeachersController < ApplicationController
   end
 
   def show
-  end
-
-  def edit
   end
 
   def update
