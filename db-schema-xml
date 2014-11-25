@@ -71,7 +71,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="471" y="481" name="learners">
+<table x="435" y="489" name="learners">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -82,6 +82,9 @@
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <row name="learner_phone" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="school_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
@@ -150,29 +153,13 @@
 <part>id</part>
 </key>
 </table>
-<table x="923" y="510" name="learner_teachers">
+<table x="907" y="469" name="learner_teachers">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <row name="teacher_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="teachers" row="id" />
-</row>
-<row name="learner_id" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default><relation table="learners" row="id" />
-</row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="193" y="526" name="learner_schools">
-<row name="id" null="1" autoincrement="1">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="school_id" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default><relation table="Schools" row="id" />
 </row>
 <row name="learner_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
