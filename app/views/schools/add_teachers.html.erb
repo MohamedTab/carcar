@@ -8,7 +8,8 @@
     <div class="form-group">
       <div class="field">
         <%= label_tag 'teachers[]', teacher.name   %><br>
-        <%= check_box_tag 'teachers[]', teacher.id, :class => "form-control" %>
+        <%= check_box_tag 'teachers[]', teacher.id, :class => "form-control", :checked => true %>
+        <%= teacher.email %>
       </div>
     </div>
   <% end %>
