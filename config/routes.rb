@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  get 'learners/index'
+
+  get 'learners/new'
+
+  get 'learners/create'
+
+  get 'learners/show'
+
+  get 'learners/edit'
+
+  get 'learners/destroy'
+
+  get 'learners/update'
+
+  devise_for :learners
   get 'home/index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
