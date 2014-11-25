@@ -32,17 +32,21 @@ class SchoolsController < ApplicationController
   end
 
   def add_teachers
+    @school = School.find(params[:school_id])
     @teachers = Teacher.all
   end
 
   def create_contract
     @school = School.find(params[:school_id])
     if params[:teachers]
+      @school.teachers.delete_all
+
       params[:teachers].each do |teacher_id|
         teacher = Teacher.find(teacher_id)
         @school.teachers << teacher
-        @school.save
       end
+    else
+      @school.teachers.delete_all
     end
     redirect_to school_path(@school)
   end
