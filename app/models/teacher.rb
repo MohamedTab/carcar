@@ -5,4 +5,5 @@ class Teacher < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :schools, through: :teacher_contracts
+  validates :email, uniqueness: true
 end

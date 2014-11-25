@@ -1,3 +1,26 @@
 <h1>Schools#show</h1>
 
+
+
+<br>
+<h2>liste des professeurs de l'école</h2>
+<br>
+
+<table>
+ <thead>
+   <tr>
+     <th>Name</th>
+     <th colspan="3"></th>
+   </tr>
+ </thead>  <tbody>
+   <% @school.teachers.each do |teacher| %>
+     <tr>
+       <td><%= teacher.name %></td>
+
+     </tr>
+   <% end %>
+ </tbody>
+</table><br>
+
+
 <%= link_to 'choisissez un nouveau moniteur', school_add_contract_path(@school) %>
