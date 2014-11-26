@@ -1,24 +1,11 @@
 Rails.application.routes.draw do
-  get 'learners/index'
 
-  get 'learners/new'
-
-  get 'learners/create'
-
-  get 'learners/show'
-
-  get 'learners/edit'
-
-  get 'learners/destroy'
-
-  get 'learners/update'
-
-  devise_for :learners
+  devise_for :learners, controllers: { registrations: "learners/registrations"}
   get 'home/index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :teachers
+  devise_for :teachers, controllers: { registrations: "teachers/registrations"}
 
   resources :schools do
     get '/teachers' => 'schools#add_teachers', as: :add_contract
