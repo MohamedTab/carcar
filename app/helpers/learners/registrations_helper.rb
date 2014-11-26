@@ -1,0 +1,2 @@
+module Learners::RegistrationsHelper
+end

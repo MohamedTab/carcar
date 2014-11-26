@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :learners do
     member do
   get '/schools' => 'learners#add_school', as: :add_school
@@ -6,12 +7,13 @@ Rails.application.routes.draw do
   end
 end
 
-  devise_for :learners
+  devise_for :learners, controllers: { registrations: "learners/registrations"}
+
   get 'home/index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :teachers
+  devise_for :teachers, controllers: { registrations: "teachers/registrations"}
 
   resources :schools do
     get '/teachers' => 'schools#add_teachers', as: :add_contract
