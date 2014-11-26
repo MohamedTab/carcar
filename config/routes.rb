@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :learners do
-    member do
-  get '/schools' => 'learners#add_school', as: :add_school
-  post '/schools' => 'learners#update_add_school', as: :update_add_school
-  end
-end
 
   devise_for :learners, controllers: { registrations: "learners/registrations"}
+  resources :learners do
+    member do
+      get '/schools' => 'learners#add_school', as: :add_school
+      post '/schools' => 'learners#update_add_school', as: :update_add_school
+    end
+  end
 
   get 'home/index'
 
