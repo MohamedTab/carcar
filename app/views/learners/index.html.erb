@@ -1,2 +1,7 @@
 <h1>Learners#index</h1>
 <p>Find me in app/views/learners/index.html.erb</p>
+
+<% @learners.each do |learner| %>
+<%= learner.email %><%= link_to 'show', learner_path(learner) %>
+<% end %>
+
