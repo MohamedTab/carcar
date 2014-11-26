@@ -1,2 +1,19 @@
-<h1>Teachers#index</h1>
-<p>Find me in app/views/teachers/index.html.erb</p>
+Liste des Professeurs inscrit sur carcar
+
+<table>
+ <thead>
+   <tr>
+     <th>Name</th>
+     <th>E-mail</th>
+     <th colspan="3"></th>
+   </tr>
+ </thead>  <tbody>
+   <% @teachers.each do |teacher| %>
+     <tr>
+       <td><%= teacher.name %></td>
+       <td><%= teacher.email %></td>
+
+     </tr>
+   <% end %>
+ </tbody>
+</table>
