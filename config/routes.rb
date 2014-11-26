@@ -1,17 +1,10 @@
 Rails.application.routes.draw do
-  get 'learners/index'
-
-  get 'learners/new'
-
-  get 'learners/create'
-
-  get 'learners/show'
-
-  get 'learners/edit'
-
-  get 'learners/destroy'
-
-  get 'learners/update'
+  resources :learners do
+    member do
+  get '/schools' => 'learners#add_school', as: :add_school
+  post '/schools' => 'learners#update_add_school', as: :update_add_school
+  end
+end
 
   devise_for :learners
   get 'home/index'
