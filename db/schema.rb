@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126195425) do
+ActiveRecord::Schema.define(version: 20141127095254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,10 @@ ActiveRecord::Schema.define(version: 20141126195425) do
     t.string   "city"
     t.string   "zip"
     t.string   "country"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "learners", ["email"], name: "index_learners_on_email", unique: true, using: :btree
@@ -117,6 +121,10 @@ ActiveRecord::Schema.define(version: 20141126195425) do
     t.string   "address"
     t.string   "city"
     t.string   "zip"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "teachers", ["email"], name: "index_teachers_on_email", unique: true, using: :btree

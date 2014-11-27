@@ -24,7 +24,10 @@
     <%= f.label :zip %><br />
     <%= f.text_field :zip, autofocus: true %>
   </div>
-
+  <div class="field">
+    <%= f.label :picture %>
+    <%= f.file_field :picture %>
+  </div>
   <div class="field">
     <%= f.label :password %>
     <% if @validatable %>

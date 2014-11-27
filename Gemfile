@@ -51,3 +51,6 @@ gem 'bootstrap_form'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'aws-sdk'
+gem 'paperclip'
+
