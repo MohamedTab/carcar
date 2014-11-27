@@ -1,3 +1,12 @@
-// Place all the styles related to the learners controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+h3 {
+  padding: 20px 0px;
+}
+
+.list-inline > li {
+  padding: 10px 75px;
+}
+
+.list-inline {
+  background-color: #313030;
+  color: white;
+}
