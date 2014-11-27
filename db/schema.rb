@@ -71,6 +71,10 @@ ActiveRecord::Schema.define(version: 20141127172046) do
     t.string   "city"
     t.string   "zip"
     t.string   "country"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "learners", ["email"], name: "index_learners_on_email", unique: true, using: :btree
@@ -96,10 +100,19 @@ ActiveRecord::Schema.define(version: 20141127172046) do
     t.string   "manager_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "city"
-    t.string   "zip"
     t.string   "country"
     t.string   "siret"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.string   "street_number"
+    t.string   "route"
+    t.string   "locality"
+    t.string   "administrative_area_level_1"
+    t.string   "postal_code"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "teacher_contracts", force: true do |t|
@@ -129,6 +142,10 @@ ActiveRecord::Schema.define(version: 20141127172046) do
     t.string   "address"
     t.string   "city"
     t.string   "zip"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "teachers", ["email"], name: "index_teachers_on_email", unique: true, using: :btree

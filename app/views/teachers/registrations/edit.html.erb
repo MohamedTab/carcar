@@ -23,6 +23,10 @@
     <%= f.label :zip %><br />
     <%= f.text_field :zip, autofocus: true %>
   </div>
+  <div class="field">
+    <%= f.label :picture %>
+    <%= f.file_field :picture %>
+  </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

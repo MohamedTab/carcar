@@ -53,3 +53,8 @@ gem "simple_calendar", "~> 1.1.0"
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'aws-sdk'
+gem 'paperclip'
+
+gem "geocoder"
+

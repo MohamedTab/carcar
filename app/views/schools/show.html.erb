@@ -1,4 +1,7 @@
 <h1><%= @school.name %></h1>
+
+<%= image_tag @school.picture.url(:medium) %>
+
 <p>Addresse : <%= @school.address %> <%= @school.zip %> <%= @school.city %></p>
 <p>Responsable : <%= @school.manager_name %></p>
 
