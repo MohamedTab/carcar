@@ -5,7 +5,8 @@ class Learner < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :teachers, through: :lessons
+  #has_many :teachers, through: :lessons
+  has_many :lessons
   belongs_to :school
 end
 

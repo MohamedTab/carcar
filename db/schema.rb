@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126195425) do
+ActiveRecord::Schema.define(version: 20141127172046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20141126195425) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "school_id"
-    t.string   "firs_name"
+    t.string   "first_name"
     t.string   "last_name"
     t.date     "date_of_birth"
     t.string   "phone"
@@ -76,6 +76,18 @@ ActiveRecord::Schema.define(version: 20141126195425) do
   add_index "learners", ["email"], name: "index_learners_on_email", unique: true, using: :btree
   add_index "learners", ["reset_password_token"], name: "index_learners_on_reset_password_token", unique: true, using: :btree
   add_index "learners", ["school_id"], name: "index_learners_on_school_id", using: :btree
+
+  create_table "lessons", force: true do |t|
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "learner_id"
+    t.integer  "availability_id"
+  end
+
+  add_index "lessons", ["availability_id"], name: "index_lessons_on_availability_id", using: :btree
+  add_index "lessons", ["learner_id"], name: "index_lessons_on_learner_id", using: :btree
 
   create_table "schools", force: true do |t|
     t.string   "name"

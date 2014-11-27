@@ -8,7 +8,11 @@ class Learners::RegistrationsController < Devise::RegistrationsController
   devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :firs_name, :last_name, :date_of_birth, :phone, :address, :city, :zip, :country, :password) }
   end
 
-  def after_sign_up_path_for(resource)
-    learners_path
+  def after_sign_up_path_for(learner)
+    learner_path(learner)
+  end
+
+  def after_sign_in_path_for(learner)
+    learner_path(learner)
   end
 end
