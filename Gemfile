@@ -54,3 +54,5 @@ gem 'bootstrap_form'
 gem 'aws-sdk'
 gem 'paperclip'
 
+gem "geocoder"
+
