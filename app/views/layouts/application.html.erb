@@ -3,13 +3,17 @@
 <head>
   <title>Carcar</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
       <%= yield %>
+    <!-- Include Google Maps JS API -->
+      <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyBcbi9sgXofk_m2Q9IYF01P2h14H8OmtT4">
+      </script>
 
-</body>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    </body>
 </html>
