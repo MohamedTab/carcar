@@ -1,17 +1,63 @@
-<h1>Home#index</h1>
+
+
+<div class="header">
+  <div class="col-xs-12">
+    <h1>Carcar, mon auto-école connectée</h1>
+      <h3>Carcar s'adresse aux jeunes conducteurs et aux auto-écoles qui veulent se simplifier la vie</h3>
+  </div>
+</div>
+
+
+<div class="light-grey-bg">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="feature">
+          <h2>Planning en ligne</h2>
+          <img src="unicorn.png" width="100">
+          <p>Réservez une heure de conduite depuis votre smartphone</p>
+        </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="feature">
+          <h2>Simple</h2>
+          <img src="unicorn.png" width="100">
+          <p>Un utilisation intuitive</p>
+        </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="feature">
+          <h2>Rapide</h2>
+          <img src="unicorn.png" width="100">
+          <p>Gagnez du temps</p>
+        </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="feature">
+          <h2>Essayez</h2>
+          <img src="unicorn.png" width="100">
+          <p>Bah ouais quoi</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
-<%= link_to 'Devenez moniteur', new_teacher_registration_path %>
-<br>
-<br>
 
-<%= link_to 'Devenez learner', new_learner_registration_path %>
 
-<br>
-<br>
+<%= link_to 'Je suis Moniteur', new_teacher_registration_path, :class => "btn btn-primary"%>
 
-<h2>Listes des écoles disponibles</h2>
+
+<%= link_to 'Je suis inscrit dans une auto école', new_learner_registration_path, :class => "btn btn-primary"%>
+
+
+
+
+
+<h2>Ecoles déjà connectées</h2>
 
  <table>
  <thead>
