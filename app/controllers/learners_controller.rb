@@ -11,7 +11,7 @@ class LearnersController < ApplicationController
   def create
     @learner = learner.new(params[:learner])
     @learner.save
-    redirect_to schools_path
+    redirect_to learners_path
   end
 
   def show
