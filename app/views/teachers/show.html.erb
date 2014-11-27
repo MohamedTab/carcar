@@ -9,6 +9,7 @@
  <thead>
    <tr>
      <th>Name</th>
+     <th>manager de l'école</th>
 
      <th colspan="3"></th>
    </tr>
@@ -16,8 +17,7 @@
    <% @teacher.teacher_contracts.each do |teacher| %>
      <tr>
        <td><%= teacher.school.name %></td>
-
-
+       <td><%= teacher.school.manager_name %></td>
      </tr>
    <% end %>
  </tbody>
