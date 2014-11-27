@@ -1,14 +1,90 @@
+<!-- photo,
+acce au prof edit,
+planning,
+cours prévu,
+mes moniteurs -->
 
-MEs heures, historique , avancement
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-12">
+      <h3>MON COMPTE</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="list-inline">
+        <li><%= link_to 'Mon planning', learner_path(@learner) %></li>
+        <li><%= link_to 'Données personnells', edit_learner_registration_path %></li>
+        <li>Historique de mes leçons</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<%= link_to "j'ajoute mon ecole", add_school_learner_path %>
 
 
+<%= link_to "sign out", destroy_learner_session_path, method: :delete %>
+
+
+Par mois
+<br> </br>
+<br> </br>
+
+<div class="calendar" >
+  <%= month_calendar do |date| %>
+      <%= date.mday %>
+  <% end %>
+</div>
+
+<div class="calendar-hour">
+  <% @hours.each do |hour|%>
+    <div class="hour">
+     <%= hour %>
+    </div>
+  <% end %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Starts at</th>
+      <th>Ends at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lessons.each do |lesson| %>
+      <tr>
+        <td><%= lesson.starts_at %></td>
+        <td><%= lesson.ends_at %></td>
+        <td><%= link_to 'Show', lesson %></td>
+        <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
+        <td><%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lesson', new_lesson_path %>
 
 <%= image_tag @learner.picture.url(:medium) %>
 
 
 
 
+<br> </br>
+<br> </br>
 
+<h3>Mes Moniteurs </h3>
+<% @teachers.each do |teacher| %>
+<%= link_to teacher.name, teacher_path(teacher) %>
+<% end %>
+<br> </br>
+<br> </br>
 
 <%= form_tag(update_add_school_learner_path(@learner)) do %>
     <div class="form-group">

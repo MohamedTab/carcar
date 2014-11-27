@@ -10,3 +10,52 @@ h3 {
   background-color: #313030;
   color: white;
 }
+
+.calendar-header {
+  width: 525px;
+  padding: 10px 0px;
+  text-align: center;
+  background-color: #333333;
+  color: white;
+}
+
+.calendar-header > a {
+  color :white;
+}
+
+th {
+  text-align: center;
+}
+
+.day {
+  text-align: center;
+  background-color: #E0F7CC;
+  border: solid 1px #C7F1A3;
+  width: 75px;
+  height: 75px;
+}
+
+.day_a {
+  text-align: center;
+  background-color: red;
+  border: solid 1px #C7F1A3;
+  width: 75px;
+  height: 75px;
+}
+
+.calendar {
+ margin-left: 140px;
+ margin-bottom: 10px;
+}
+
+.hour {
+  margin-bottom: 1px;
+  display: none;
+  background-color: #E0F7CC;
+  border: 1px solid #C7F1A3;
+}
+
+.calendar-hour {
+  width: 525px;
+  margin-left: 140px;
+}

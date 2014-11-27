@@ -24,3 +24,19 @@
    <% end %>
  </tbody>
 </table><br>
+
+<br>
+<br>
+<div class="calendar" >
+  <%= month_calendar do |date| %>
+      <%= date.mday %>
+  <% end %>
+</div>
+
+<div class="calendar-hour">
+  <% @hours.each do |hour|%>
+    <div class="hour">
+     <%= hour %>
+    </div>
+  <% end %>
+</div>
