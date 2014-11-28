@@ -2,10 +2,18 @@ class SchoolsController < ApplicationController
   before_action :set_school, only: [:show, :edit, :update, :destroy]
   def index
     @schools = School.all
+    @markers = Gmaps4rails.build_markers(@schools) do |school, marker|
+      marker.lat school.latitude
+      marker.lng school.longitude
+    end
   end
 
   def show
     @teachers = Teacher.all
+    @markers = Gmaps4rails.build_markers([@school]) do |school, marker|
+      marker.lat school.latitude
+      marker.lng school.longitude
+    end
   end
 
   def new
