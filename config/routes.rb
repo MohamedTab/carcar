@@ -23,6 +23,12 @@ Rails.application.routes.draw do
   end
   resources :teachers, execpt: [:new, :create, :edit, :update]
 
+  resources :lessons
+
+      get '/lessons' => 'teachers#add_lessons', as: :add_lessons
+      post '/lessons' => 'teachers#create_lesson', as: :create_lesson
+
+
 
 
 

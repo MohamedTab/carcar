@@ -1,6 +1,6 @@
 <h1>Profil du professeur</h1>
 
-<%= image_tag @school.picture.url(:medium) %>
+<%= image_tag @teacher.picture.url(:medium) %>
 <h2><%= @teacher.name %></h2>
 
 <p><%= @teacher.email%></p>
@@ -28,15 +28,26 @@
 <br>
 <br>
 <div class="calendar" >
-  <%= month_calendar do |date| %>
-      <%= date.mday %>
+  <%= week_calendar do |date| %>
+    <%= date.mday %>
+    <% (6..20).each do |hour| %>
+      <%= form_for(Lesson.new(starts_at: date + hour.hours, ends_at: date + hour.hours + 1)) do |f| %>
+        <%= f.hidden_field :starts_at %>
+        <%= f.hidden_field :ends_at %>
+        <%= hour %>h - <%= hour + 1 %>h
+        <%= f.submit %>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
 
-<div class="calendar-hour">
-  <% @hours.each do |hour|%>
-    <div class="hour">
-     <%= hour %>
-    </div>
-  <% end %>
-</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+

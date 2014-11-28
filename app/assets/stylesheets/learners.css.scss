@@ -31,7 +31,7 @@ th {
   text-align: center;
   background-color: #E0F7CC;
   border: solid 1px #C7F1A3;
-  width: 75px;
+  width: 150px;
   height: 75px;
 }
 
@@ -39,7 +39,7 @@ th {
   text-align: center;
   background-color: red;
   border: solid 1px #C7F1A3;
-  width: 75px;
+  width: 150px;
   height: 75px;
 }
 
@@ -49,13 +49,5 @@ th {
 }
 
 .hour {
-  margin-bottom: 1px;
-  display: none;
   background-color: #E0F7CC;
-  border: 1px solid #C7F1A3;
-}
-
-.calendar-hour {
-  width: 525px;
-  margin-left: 140px;
 }
