@@ -32,18 +32,32 @@ Par mois
 <br> </br>
 
 <div class="calendar" >
-  <%= month_calendar do |date| %>
+  <%= week_calendar do |date| %>
       <%= date.mday %>
-  <% end %>
-</div>
-
-<div class="calendar-hour">
+      <div class="calendar-hour">
   <% @hours.each do |hour|%>
     <div class="hour">
      <%= hour %>
     </div>
   <% end %>
 </div>
+  <% end %>
+</div>
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br><br><br>
+<br>
+<br><br>
+<br>
+
+<br>
+<br>
 
 <table>
   <thead>
