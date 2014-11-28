@@ -1,3 +1,8 @@
-// Place all the styles related to the schools controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body > div.container.coktails_presentation.text-center > div img {
+width: 200px;
+height: 150px;
+border: 10px solid white;
+border-radius: 50%;
+box-shadow: 0 0 5px lightgrey;
+vertical-align: middle;
+}
