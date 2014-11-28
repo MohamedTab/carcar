@@ -11,9 +11,11 @@
       <%= yield %>
     <!-- Include Google Maps JS API -->
       <script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyBcbi9sgXofk_m2Q9IYF01P2h14H8OmtT4">
+        src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;key=AIzaSyBcbi9sgXofk_m2Q9IYF01P2h14H8OmtT4">
       </script>
+      <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
 
-      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application' %>
+      <%= yield(:js) %>
     </body>
 </html>
