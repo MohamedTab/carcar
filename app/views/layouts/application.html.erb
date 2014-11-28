@@ -7,15 +7,16 @@
 </head>
 <body>
   <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
 
-  <%= yield %>
+    <p class="alert"><%= alert %></p>
+      <%= yield %>
+    <!-- Include Google Maps JS API -->
+      <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;key=AIzaSyBcbi9sgXofk_m2Q9IYF01P2h14H8OmtT4">
+      </script>
+      <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
 
-  <!-- Include Google Maps JS API -->
-  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyBcbi9sgXofk_m2Q9IYF01P2h14H8OmtT4" %>
-  <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
-  <%= javascript_include_tag "application" %>
-
-  <%= yield(:js) %>
-  </body>
+      <%= javascript_include_tag 'application' %>
+      <%= yield(:js) %>
+    </body>
 </html>
