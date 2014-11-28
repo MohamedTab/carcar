@@ -25,5 +25,21 @@
  </tbody>
 </table><br>
 
+<div id="map" style="width: 50%; height: 300px;"></div>
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $(document).on('ready', function() {
+      handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function(){
+        markers = handler.addMarkers(<%= raw @markers.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+    })
+  <% end %>
+<% end %>
+
+
 
 <%= link_to 'choisissez un nouveau moniteur', school_add_contract_path(@school) %>

@@ -10,6 +10,10 @@ class SchoolsController < ApplicationController
 
   def show
     @teachers = Teacher.all
+    @markers = Gmaps4rails.build_markers([@flat]) do |flat, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+    end
   end
 
   def new
