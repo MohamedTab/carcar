@@ -14,28 +14,28 @@
       <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="feature">
           <h2>Planning en ligne</h2>
-          <img src="unicorn.png" width="100">
+          <%= image_tag "planning.png" %>
           <p>Réservez une heure de conduite depuis votre smartphone</p>
         </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="feature">
           <h2>Simple</h2>
-          <img src="unicorn.png" width="100">
+          <%= image_tag "hammock.png" %>
           <p>Un utilisation intuitive</p>
         </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="feature">
           <h2>Rapide</h2>
-          <img src="unicorn.png" width="100">
+          <%= image_tag "clock.png" %>
           <p>Gagnez du temps</p>
         </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="feature">
           <h2>Essayez</h2>
-          <img src="unicorn.png" width="100">
+          <%= image_tag "gogogo.png" %>
           <p>Bah ouais quoi</p>
         </div>
         </div>
@@ -46,58 +46,42 @@
 
 
 
+<div class="buttons">
+  <%= link_to 'Je suis Moniteur', new_teacher_registration_path, :class => "btn btn-primary"%>
+  <%= link_to 'Je suis inscrit dans une auto école', new_learner_registration_path, :class => "btn btn-primary"%>
+  <p>Vous êtes une auto-école ? contactez nous pour être référencés !</p>
+</div>
 
 
-<%= link_to 'Je suis Moniteur', new_teacher_registration_path, :class => "btn btn-primary"%>
+<div class="homemaps">
+  <h2>Ecoles déjà connectées</h2>
+  <%= link_to 'Trouvez la plus proche de chez vous', schools_path %>
+  <br>
+  <br>
 
 
-<%= link_to 'Je suis inscrit dans une auto école', new_learner_registration_path, :class => "btn btn-primary"%>
-
-<p>Vous êtes une auto-école ? contactez nous pour être référencés !</p>
-
-
-
-
-
-<h2>Ecoles déjà connectées</h2>
-
- <table>
- <thead>
-   <tr>
-     <th>Name</th>
-     <th>Addresse</th>
-     <th>Phone</th>
-     <th colspan="3"></th>
-   </tr>
- </thead>  <tbody>
-   <% @schools.each do |school| %>
-     <tr>
-       <td><%= school.name %></td>
-       <td><%= school.address %></td>
-       <td><%= school.phone %></td>
-       <td><%= link_to 'Show', school %></td>
-       <td><%= link_to 'Edit', edit_school_path(school) %></td>
-       <td><%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-     </tr>
-   <% end %>
- </tbody>
-</table>
-
-<%= link_to 'voir toutes les écoles', schools_path %>
-
-
-<div id="map" style="width: 100%; height: 600px;"></div>
+  <div class="col-xs-12">
+    <div id="map" style="width: 80%; height: 400px;" class="container text-center">
+    </div>
+  </div>
 
 <% content_for(:js) do %>
-  <%= javascript_tag do %>
-    $(document).on('ready', function() {
-      handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function(){
-        markers = handler.addMarkers(<%= raw @markers.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-      });
-    })
+    <script type="text/javascript">
+      $(document).on('ready', function() {
+        handler = Gmaps.build('Google');
+        handler.buildMap({ internal: { id: 'map' } }, function(){
+          markers = handler.addMarkers(<%= raw @markers.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+        });
+      })
+    </script>
   <% end %>
-<% end %>
+
+<br>
+<br>
+<div class="lastin">
+  <h2>Dernières écoles inscrites</h2>
+</div>
+
 
