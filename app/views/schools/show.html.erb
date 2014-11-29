@@ -1,6 +1,14 @@
-<h1><%= @school.name %></h1>
-
-<%= image_tag @school.picture.url(:medium) %>
+<div class="header">
+  <div class="col-xs-12">
+    <div class="uppic">
+      <%= image_tag @school.picture.url(:medium) %>
+    </div>
+      <h1><%= @school.name %></h1>
+      <p><%= @school.address %></p>
+      <p><%= @school.phone %></p>
+      <p><%= @school.manager_name %></p>
+  </div>
+</div>
 
 
 <br>
