@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :availabilities
+
   resources :lessons
 
   devise_for :learners, controllers: { registrations: "learners/registrations"}
@@ -21,8 +23,9 @@ Rails.application.routes.draw do
     get '/teachers' => 'schools#add_teachers', as: :add_contract
     post '/teachers' => 'schools#create_contract', as: :create_contract
   end
-  resources :teachers, execpt: [:new, :create, :edit, :update]
-
+  resources :teachers, execpt: [:new, :create, :edit, :update] do
+      get '/teachers' => 'teachers#add_availability', as: :add_availability
+end
   resources :lessons
 
       get '/lessons' => 'teachers#add_lessons', as: :add_lessons
