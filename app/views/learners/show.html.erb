@@ -34,15 +34,9 @@ Par mois
 <div class="calendar" >
   <%= week_calendar do |date| %>
       <%= date.mday %>
-      <div class="calendar-hour">
-  <% @hours.each do |hour|%>
-    <div class="hour">
-     <%= hour %>
-    </div>
   <% end %>
 </div>
-  <% end %>
-</div>
+
 
 
 
@@ -94,9 +88,13 @@ Par mois
 <br> </br>
 
 <h3>Mes Moniteurs </h3>
+<% if @learner.school.nil? %>
+<% %>
+<% else %>
 <% @teachers.each do |teacher| %>
 <%= link_to teacher.name, teacher_path(teacher) %>
 <% end %>
+<%end %>
 <br> </br>
 <br> </br>
 

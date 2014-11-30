@@ -1,5 +1,5 @@
 class TeachersController < ApplicationController
-    before_action :set_school, only: [:show, :edit, :update, :destroy,]
+    before_action :set_school, only: [:show, :edit, :update, :destroy]
   def index
     @teachers = Teacher.all
   end

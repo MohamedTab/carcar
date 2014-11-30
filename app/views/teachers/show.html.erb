@@ -30,11 +30,11 @@
 <div class="calendar" >
   <%= week_calendar do |date| %>
     <%= date.mday %>
-    <% (6..20).each do |hour| %>
-      <%= form_for(Lesson.new(starts_at: date + hour.hours, ends_at: date + hour.hours + 1)) do |f| %>
+    <% (6..23).each do |hour| %>
+      <%= form_for(Lesson.new(starts_at: date + hour.hours, ends_at: date + hour.hours + 3600)) do |f| %>
         <%= f.hidden_field :starts_at %>
         <%= f.hidden_field :ends_at %>
-        <%= hour %>h - <%= hour + 1 %>h
+        <%= hour %>h - <%= hour + 3600 %>h
         <%= f.submit %>
       <% end %>
     <% end %>
@@ -44,10 +44,12 @@
 
 <br>
 <br>
-<br>
-<br>
-<br>
+
+<h3> Mon planning </h3>
+<%= link_to "Mes dispo", teacher_add_availability_path(@teacher) %>
 
 
+<br>
+<br>
 
 
