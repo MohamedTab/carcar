@@ -35,7 +35,10 @@
         <%= f.hidden_field :starts_at %>
         <%= f.hidden_field :ends_at %>
         <%= hour %>h - <%= hour + 3600 %>h
+        <% if date + hour.hours >  Lesson.find_by(availability_id: Availability.find_by(teacher_id: params[:id]).id).starts_at  && date + hour.hours + 3600  < Lesson.find_by(availability_id: Availability.find_by(teacher_id: params[:id]).id).ends_at %>
+        <% else %>
         <%= f.submit %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
