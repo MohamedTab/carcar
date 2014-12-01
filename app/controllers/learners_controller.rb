@@ -19,7 +19,11 @@ class LearnersController < ApplicationController
     @learner = Learner.find(params[:id])
     @schools = School.all
     @lessons = @learner.lessons
+    if @learner.school.nil?
+
+    else
     @teachers = @learner.school.teachers
+  end
   end
 
   def edit
