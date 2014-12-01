@@ -12,7 +12,7 @@ h3 {
 }
 
 .calendar-header {
-  width: 525px;
+  width: 1050px;
   padding: 10px 0px;
   text-align: center;
   background-color: #333333;
@@ -50,4 +50,17 @@ th {
 
 .hour {
   background-color: #E0F7CC;
+}
+
+.add_school {
+  padding: 20px 5px;
+  border: solid 1px grey;
+}
+
+ul {
+  list-style: none;
+}
+
+ul > li {
+  padding-right: 40px;
 }
