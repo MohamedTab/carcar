@@ -1,7 +1,7 @@
 
 <div class="container text-center">
   <div class="row">
-    <% School.last(4);each do |school| %>
+    <% School.last(4).each do |school| %>
       <div class="col-xs-12 col-sm-6 col-md-3">
         <h3><%= link_to school.name, school %></h3>
         <h4><%= school.address %></h4>
