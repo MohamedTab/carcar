@@ -26,6 +26,15 @@ body {
   background-color: #F0F1F5;
 }
 
-body > div.container.coktails_presentation.text-center > div > div > h3 {
+body > div.container.text-center > div > div > h3 {
   padding: 5px;
+}
+
+body > div.container.text-center > div > div > div > a > img {
+  width: 200px;
+  height: 150px;
+  border: 10px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 5px lightgrey;
+  vertical-align: middle;
 }
