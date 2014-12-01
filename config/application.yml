@@ -11,7 +11,7 @@
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
 S3_BUCKET_NAME: carcar        # \
-AWS_ACCESS_KEY_ID: AKIAIVFM3KF5OKLKP3SA #  |- Change these values
-AWS_SECRET_ACCESS_KEY: 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   # /
+AWS_ACCESS_KEY_ID:  #  |- Change these values
+AWS_SECRET_ACCESS_KEY:   # /
 
-GOOGLE_API_KEY: AIzaSyDdwE8bmDPefbOWegR5a2P983f_nQ7PPB4
+GOOGLE_API_KEY: AIzaSyBCXnZwWTkkg9p4fy0UDVs7kIsUmjbTdKk
