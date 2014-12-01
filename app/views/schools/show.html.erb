@@ -34,6 +34,8 @@
      </tbody>
     </table><br>
 
+    <%= link_to 'choisissez un nouveau moniteur', school_add_contract_path(@school) %>
+
     <div id="map" style="width: 50%; height: 300px;"></div>
 
     <% content_for(:js) do %>
@@ -48,8 +50,6 @@
         })
       <% end %>
     <% end %>
-
-    <%= link_to 'choisissez un nouveau moniteur', school_add_contract_path(@school) %>
 </div>
 </div>
 
