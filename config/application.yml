@@ -14,4 +14,4 @@ S3_BUCKET_NAME: carcar        # \
 AWS_ACCESS_KEY_ID:  #  |- Change these values
 AWS_SECRET_ACCESS_KEY:   # /
 
-GOOGLE_API_KEY: AIzaSyBCXnZwWTkkg9p4fy0UDVs7kIsUmjbTdKk
+GOOGLE_API_KEY:
