@@ -1,14 +1,14 @@
 class LessonsController < InheritedResources::Base
 
   def create
-    availability = Availability.find_by(teacher_id: params[:id])
-    if params[:lesson][:starts_at] > availability.starts_at && params[:lesson][:ends_at] < availability.ends_at
-      current_learner.lessons.create(lesson_params)
+    lesson = current_learner.lessons.build(lesson_params)
+    teacher_id = params[:teacher_id]
+    if lesson.find_availability_for_teacher(teacher_id)
+      lesson.save
       redirect_to learner_path(current_learner)
     else
-
     # AJOUTER MESSAGE DERREUR
-
+      flash[:error] = "Sa marsh pa lol NEGER"
       redirect_to learner_path(current_learner)
     end
   end
