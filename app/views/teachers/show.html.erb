@@ -1,2 +1,57 @@
-<h1>Teachers#show</h1>
-<p>Find me in app/views/teachers/show.html.erb</p>
+<h1>Profil du professeur</h1>
+
+<%= image_tag @teacher.picture.url(:medium) %>
+<h2><%= @teacher.name %></h2>
+
+<p><%= @teacher.email%></p>
+
+<h3>Appartient à l'école</h3>
+
+<table>
+ <thead>
+   <tr>
+     <th>Name</th>
+     <th>manager de l'école</th>
+
+     <th colspan="3"></th>
+   </tr>
+ </thead>  <tbody>
+   <% @teacher.teacher_contracts.each do |teacher| %>
+     <tr>
+       <td><%= teacher.school.name %></td>
+       <td><%= teacher.school.manager_name %></td>
+     </tr>
+   <% end %>
+ </tbody>
+</table><br>
+
+<br>
+<br>
+<div class="calendar" >
+  <%= week_calendar do |date| %>
+    <%= date.mday %>
+    <% (6..23).each do |hour| %>
+      <% lesson = Lesson.new(starts_at: date + hour.hours, ends_at: date + hour.hours + 3600) %>
+      <% availability = lesson.find_availability_for_teacher(params[:id]) %>
+      <%= form_for([@teacher, lesson]) do |f| %>
+        <%= f.hidden_field :starts_at %>
+        <%= f.hidden_field :ends_at %>
+        <%= f.hidden_field :availability_id %>
+        <%= hour %>h - <%= hour + 1 %>h
+        <% unless availability.lesson_booked?(lesson.starts_at, lesson.ends_at) %>
+          <%= f.submit %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+
+<br>
+<br>
+
+<h3> Mon planning </h3>
+<%= link_to "Mes dispo", teacher_add_availability_path(@teacher) %>
+
+<br>
+<br>

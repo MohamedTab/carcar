@@ -6,9 +6,12 @@
 <%= form_tag(school_create_contract_path  ) do %>
 <% @teachers.each do |teacher| %>
     <div class="form-group">
+      <div class="col-xs-12 col-sm-6 col-md-3">
       <div class="field">
         <%= label_tag 'teachers[]', teacher.name   %><br>
-        <%= check_box_tag 'teachers[]', teacher.id, :class => "form-control" %>
+        <%= check_box_tag 'teachers[]', teacher.id, teacher.in_school?(@school), :class => "form-control" %>
+        <%= teacher.email %>
+      </div>
       </div>
     </div>
   <% end %>

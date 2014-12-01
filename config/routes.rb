@@ -1,18 +1,33 @@
 Rails.application.routes.draw do
+  resources :availabilities
+
+  resources :lessons
+
+  devise_for :learners, controllers: { registrations: "learners/registrations" }
+  resources :learners do
+    member do
+      get '/schools' => 'learners#add_school', as: :add_school
+      post '/schools' => 'learners#update_add_school', as: :update_add_school
+    end
+  end
+
   get 'home/index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :teachers
+
+  devise_for :teachers, controllers: { registrations: "teachers/registrations" }
 
   resources :schools do
     get '/teachers' => 'schools#add_teachers', as: :add_contract
     post '/teachers' => 'schools#create_contract', as: :create_contract
   end
-  resources :teachers, execpt: [:new, :create, :edit, :update]
 
+  resources :teachers, execpt: [:new, :create, :edit, :update] do
+      get '/teachers' => 'teachers#add_availability', as: :add_availability
 
-
+      resources :lessons, only: [:create]
+  end
 
   root to: "home#index"
 

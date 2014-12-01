@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
@@ -35,6 +37,12 @@ gem 'binding_of_caller', group: :development
 gem 'better_errors', group: :development
 
 gem 'figaro'
+
+gem 'bootstrap-sass', '~> 3.3.1'
+gem 'font-awesome-sass', '~> 4.2.0'
+gem 'bootstrap_form'
+
+gem "simple_calendar", "~> 1.1.0"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -46,4 +54,12 @@ gem 'figaro'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'aws-sdk'
+gem 'paperclip'
+
+gem "geocoder"
+
+gem "gmaps4rails"
+gem "rails-assets-underscore"
 

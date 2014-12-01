@@ -1,10 +1,104 @@
-<h1>Home#index</h1>
 
 
-Je veux devenir prof <lien>
+<div class="header">
+  <div class="col-xs-12">
+    <h1>Carcar, mon auto-école connectée</h1>
+    <h3>Carcar s'adresse aux jeunes conducteurs et aux auto-écoles qui veulent se simplifier la vie</h3>
+  </div>
+</div>
 
-je veux devenir <learner>
 
-Liste de toutes les ecoles
+<div class="light-grey-bg">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="feature">
+          <h2>Planning en ligne</h2>
+          <%= image_tag "planning.png" %>
+          <p>Réservez une heure de conduite depuis votre smartphone</p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="feature">
+          <h2>Simple</h2>
+          <%= image_tag "hammock.png" %>
+          <p>Un utilisation intuitive</p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="feature">
+          <h2>Rapide</h2>
+          <%= image_tag "clock.png" %>
+          <p>Gagnez du temps</p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="feature">
+          <h2>Essayez</h2>
+          <%= image_tag "gogogo.png" %>
+          <p>Bah ouais quoi</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-Liste de tous les profs
+
+
+<div class="buttons">
+  <%= link_to 'Je suis Moniteur', new_teacher_registration_path, :class => "btn btn-primary"%>
+  <%= link_to 'Je suis inscrit dans une auto école', new_learner_registration_path, :class => "btn btn-primary"%>
+  <p>Vous êtes une auto-école ? contactez nous pour être référencés !</p>
+</div>
+
+
+<div class="homemaps">
+  <h2>Ecoles déjà connectées</h2>
+  <%= link_to 'Trouvez la plus proche de chez vous', schools_path %>
+  <br>
+  <br>
+
+
+  <div class="col-xs-12">
+    <div id="map" style="width: 80%; height: 400px;" class="container text-center">
+    </div>
+  </div>
+
+<% content_for(:js) do %>
+    <script type="text/javascript">
+      $(document).on('ready', function() {
+        handler = Gmaps.build('Google');
+        handler.buildMap({ internal: { id: 'map' } }, function(){
+          markers = handler.addMarkers(<%= raw @markers.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+        });
+      })
+    </script>
+  <% end %>
+</div>
+
+<br>
+<br>
+<div class="lastin">
+  <h2>Dernières écoles inscrites</h2>
+</div>
+<br>
+<br>
+
+<div class="container text-center">
+  <div class="row">
+    <% School.last(4).each do |school| %>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <h3><%= link_to school.name, school %></h3>
+        <h4><%= school.address %></h4>
+        <p><%= school.manager_name %></p>
+        <div class="photo_school">
+          <%= link_to image_tag(school.picture.url(:medium)), school %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

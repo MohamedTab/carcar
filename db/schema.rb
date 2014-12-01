@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124171616) do
+ActiveRecord::Schema.define(version: 20141129152137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,60 @@ ActiveRecord::Schema.define(version: 20141124171616) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "availabilities", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "teacher_id"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+  end
+
+  add_index "availabilities", ["teacher_id"], name: "index_availabilities_on_teacher_id", using: :btree
+
+  create_table "learners", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "school_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "date_of_birth"
+    t.string   "phone"
+    t.string   "address"
+    t.string   "city"
+    t.string   "zip"
+    t.string   "country"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "learners", ["email"], name: "index_learners_on_email", unique: true, using: :btree
+  add_index "learners", ["reset_password_token"], name: "index_learners_on_reset_password_token", unique: true, using: :btree
+  add_index "learners", ["school_id"], name: "index_learners_on_school_id", using: :btree
+
+  create_table "lessons", force: true do |t|
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "learner_id"
+    t.integer  "availability_id"
+  end
+
+  add_index "lessons", ["availability_id"], name: "index_lessons_on_availability_id", using: :btree
+  add_index "lessons", ["learner_id"], name: "index_lessons_on_learner_id", using: :btree
+
   create_table "schools", force: true do |t|
     t.string   "name"
     t.string   "address"
@@ -56,10 +110,19 @@ ActiveRecord::Schema.define(version: 20141124171616) do
     t.string   "manager_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "city"
-    t.string   "zip"
     t.string   "country"
     t.string   "siret"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.string   "street_number"
+    t.string   "route"
+    t.string   "locality"
+    t.string   "administrative_area_level_1"
+    t.string   "postal_code"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "teacher_contracts", force: true do |t|
@@ -86,6 +149,13 @@ ActiveRecord::Schema.define(version: 20141124171616) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "zip"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "teachers", ["email"], name: "index_teachers_on_email", unique: true, using: :btree

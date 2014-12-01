@@ -2,10 +2,18 @@ class SchoolsController < ApplicationController
   before_action :set_school, only: [:show, :edit, :update, :destroy]
   def index
     @schools = School.all
+    @markers = Gmaps4rails.build_markers(@schools) do |school, marker|
+      marker.lat school.latitude
+      marker.lng school.longitude
+    end
   end
 
   def show
     @teachers = Teacher.all
+    @markers = Gmaps4rails.build_markers([@school]) do |school, marker|
+      marker.lat school.latitude
+      marker.lng school.longitude
+    end
   end
 
   def new
@@ -14,8 +22,11 @@ class SchoolsController < ApplicationController
 
   def create
     @school = School.new(school_params)
-    @school.save
-    redirect_to schools_path
+    if @school.save
+      redirect_to schools_path
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -32,17 +43,21 @@ class SchoolsController < ApplicationController
   end
 
   def add_teachers
+    @school = School.find(params[:school_id])
     @teachers = Teacher.all
   end
 
   def create_contract
     @school = School.find(params[:school_id])
     if params[:teachers]
+      @school.teachers.delete_all
+
       params[:teachers].each do |teacher_id|
         teacher = Teacher.find(teacher_id)
         @school.teachers << teacher
-        @school.save
       end
+    else
+      @school.teachers.delete_all
     end
     redirect_to school_path(@school)
   end
@@ -55,6 +70,6 @@ class SchoolsController < ApplicationController
     end
 
     def school_params
-      params.require(:school).permit(:name, :address, :manager_name, :phone, :zip, :city, :country, :siret, :school_id)
+      params.require(:school).permit(:name, :address, :manager_name, :phone, :siret, :picture, :street_number, :route, :locality, :postal_code, :country, :administrative_area_level_1)
     end
 end
