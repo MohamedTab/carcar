@@ -7,6 +7,8 @@
 
 <h3>Appartient à l'école</h3>
 
+<%= link_to "sign out", destroy_teacher_session_path, method: :delete %>
+
 <table>
  <thead>
    <tr>
@@ -31,11 +33,18 @@
   <%= week_calendar do |date| %>
     <%= date.mday %>
     <% (6..23).each do |hour| %>
-      <%= form_for(Lesson.new(starts_at: date + hour.hours, ends_at: date + hour.hours + 3600)) do |f| %>
+      <% lesson = Lesson.new(starts_at: date + hour.hours, ends_at: date + hour.hours + 3600) %>
+      <% availability = lesson.find_availability_for_teacher(params[:id]) %>
+      <%= form_for([@teacher, lesson]) do |f| %>
         <%= f.hidden_field :starts_at %>
         <%= f.hidden_field :ends_at %>
-        <%= hour %>h - <%= hour + 3600 %>h
-        <%= f.submit %>
+        <%= f.hidden_field :availability_id %>
+        <%= hour %>h - <%= hour + 1 %>h
+        <% if availability.nil? %>
+          <% teacher_path(params[:id]) %>
+        <% elsif availability.lesson_booked?(lesson.starts_at, lesson.ends_at) == false %>
+                  <%= f.submit %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
@@ -48,8 +57,5 @@
 <h3> Mon planning </h3>
 <%= link_to "Mes dispo", teacher_add_availability_path(@teacher) %>
 
-
 <br>
 <br>
-
-
