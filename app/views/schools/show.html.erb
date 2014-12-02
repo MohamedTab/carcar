@@ -1,8 +1,8 @@
 
 <div class="container">
-  <div class="row">
+
     <div class="text-center">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-6">
       <h2><%= @school.name %></h2>
       <p><%= @school.address %></p>
       <p><%= @school.phone %></p>
@@ -16,13 +16,36 @@
       <%= image_tag @school.picture.url(:medium) %>
     </div>
      <div class="col-xs-12">
-      <h4 class="text-center">liste des professeurs de l'école</h4>
+      <h4 class="text-center">Disponibilités professeurs</h4>
         <% @school.teachers.each do |teacher| %>
-        <ul>
           <div class="col-xs-12">
-          <li><%= image_tag teacher.picture.url(:thumb) %> <%=link_to teacher.name, teacher_path(teacher) %></li>
-        </ul>
-        </div>
+            <div class="row">
+            <ul>
+              <li><%= image_tag teacher.picture.url(:thumb) %> <%=link_to teacher.name, teacher_path(teacher) %>
+              <div class="calendar" >
+                <%= week_calendar do |date| %>
+                  <%= date.mday %>
+                  <% (6..23).each do |hour| %>
+                    <% lesson = Lesson.new(starts_at: date + hour.hours, ends_at: date + hour.hours + 3600) %>
+                    <% availability = lesson.find_availability_for_teacher(params[:id]) %>
+                    <%= form_for([@teacher, lesson]) do |f| %>
+                      <%= f.hidden_field :starts_at %>
+                      <%= f.hidden_field :ends_at %>
+                      <%= f.hidden_field :availability_id %>
+                      <%= hour %>h - <%= hour + 1 %>h
+                      <% if availability.nil? %>
+                        <% teacher_path(params[:id]) %>
+                      <% elsif availability.lesson_booked?(lesson.starts_at, lesson.ends_at) == false %>
+                                <%= f.submit %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+              </div>
+              </li>
+            </ul>
+          </div>
         <% end %>
     </div>
   </div>

@@ -14,3 +14,18 @@ body > div.lastin > h2 {
 body > h1 {
   text-align: center;
 }
+
+body > div.container > div > div > div > ul > li {
+  border: 2px solid lightgrey;
+  border-radius: 10px;
+  background-color: white;
+}
+
+body > div.container > div > div > div > ul > li > div > header {
+  background-color: transparent;
+  color: black;
+}
+
+body > div {
+  position: absolute;
+}
