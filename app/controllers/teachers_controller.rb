@@ -11,10 +11,9 @@ class TeachersController < ApplicationController
     redirect_to teachers_path
   end
 
-  def show
-  end
-
   def update
+    @teacher.update(teacher_params)
+    redirect_to teachers_path
   end
 
   def destroy
