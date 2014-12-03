@@ -26,7 +26,7 @@
                 <%= image_tag teacher.picture.url(:thumb), :class => "img-circle" %>
               </div>
               <div class="name_teacher_dashboard">
-                <%= teacher.name %>
+                 <%=link_to teacher.name, teacher_path(teacher) %>
               </div>
             </div>
             <div class="col-xs-12 col-sm-9">
@@ -65,4 +65,8 @@
   <%= link_to 'choisissez un nouveau moniteur', school_add_contract_path(@school) %>
 
 </div>
+
+
+
+
 

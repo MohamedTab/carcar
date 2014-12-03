@@ -1,65 +1,57 @@
 
 <div class="container">
-
-    <div class="text-center">
-    <div class="col-xs-12 col-sm-6">
-      <h2><%= @school.name %></h2>
-      <p><%= @school.address %></p>
-      <p><%= @school.phone %></p>
-    </div>
-    </div>
-    <div class="col-xs-12 col-sm-6">
-      <div id="map" style="width: 100%; height: 300px;">
+  <div class="row">
+    <div class="presentation_school_show text-center">
+      <div class="col-xs-12 col-sm-6">
+        <h2><%= @school.name %></h2>
+          <p><%= @school.address %></p>
+          <p> Tel: <%= @school.phone %></p>
+            <%= image_tag @school.picture.url(:medium) %>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div id="map" style="width: 100%; height: 300px;">
+        </div>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-6">
-      <%= image_tag @school.picture.url(:medium) %>
-    </div>
-     <div class="col-xs-12">
-      <h4 class="text-center">Disponibilités professeurs</h4>
-        <% @school.teachers.each do |teacher| %>
-          <div class="col-xs-12">
-            <div class="row">
-            <ul>
-              <li><%= image_tag teacher.picture.url(:thumb) %> <%=link_to teacher.name, teacher_path(teacher) %>
-              <div class="calendar" >
-                <%= week_calendar do |date| %>
-                  <%= date.mday %>
-                  <% (6..23).each do |hour| %>
-                    <% lesson = Lesson.new(starts_at: date + hour.hours, ends_at: date + hour.hours + 3600) %>
-                    <% availability = lesson.find_availability_for_teacher(params[:id]) %>
-                    <%= form_for([@teacher, lesson]) do |f| %>
-                      <%= f.hidden_field :starts_at %>
-                      <%= f.hidden_field :ends_at %>
-                      <%= f.hidden_field :availability_id %>
-                      <%= hour %>h - <%= hour + 1 %>h
-                      <% if availability.nil? %>
-                        <% teacher_path(params[:id]) %>
-                      <% elsif availability.lesson_booked?(lesson.starts_at, lesson.ends_at) == false %>
-                                <%= f.submit %>
-                      <% end %>
-                    <% end %>
-                  <% end %>
-                <% end %>
-              </div>
-              </div>
-              </li>
-            </ul>
-          </div>
-        <% end %>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 class="text-center"> Nos Moniteurs </h3>
     </div>
   </div>
-  <%= link_to 'choisissez un nouveau moniteur', school_add_contract_path(@school) %>
-</div>
-
-<div class="col-xs-12 col-sm-6">
-  <div id="map" style="width: 100%; height: 300px;">
+  <div class="row">
+    <% @school.teachers.each do |teacher| %>
+    <div class="description_teacher">
+      <div class="description_teacher_photo_name col-xs-12 col-sm-3 text-center">
+        <ul>
+          <li><%= image_tag teacher.picture.url(:thumb), :class => "img-rounded" %> </li>
+          <br>
+          <li><%= teacher.name %> </li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-9">
+        <ul>
+          <li>Description</li>
+          <li>ollum est un personnage fictif du légendaire créé par l’écrivain britannique J. R. R. Tolkien et qui apparaît dans ses romans Le Hobbit et Le Seigneur des anneaux. Connu en tant que Sméagol à l'origine, Gollum est un Hobbit de la branche des Forts, qui vivait aux Champs aux Iris vers 2440 T. A..</li>
+          <blockquote class="blockquote-reverse">
+          <input id="input-1" class="rating" data-min="0" data-max="5" data-step="1">
+          </blockquote>
+        </ul>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>
 
+<br>
 
-<%= link_to 'Mon dashboard', school_dashboard_path(@school) %>
 
+<div class="text-center">
+<%= link_to 'Mon dashboard', school_dashboard_path(@school), :class => "btn btn-danger" %>
+</div>
+
+<br>
+<br>
 <% content_for(:js) do %>
   <%= javascript_tag do %>
     $(document).on('ready', function() {
