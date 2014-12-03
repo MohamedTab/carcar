@@ -39,11 +39,11 @@
         <%= f.hidden_field :starts_at %>
         <%= f.hidden_field :ends_at %>
         <%= f.hidden_field :availability_id %>
-        <%= hour %>h - <%= hour + 1 %>h
         <% if availability.nil? %>
+          <%= hour %>h - <%= hour + 1 %>h
           <% teacher_path(params[:id]) %>
         <% elsif availability.lesson_booked?(lesson.starts_at, lesson.ends_at) == false %>
-                  <%= f.submit %>
+            <%= f.submit "#{hour}h - #{hour + 1} h", :class => 'btn btn-link' %>
         <% end %>
       <% end %>
     <% end %>

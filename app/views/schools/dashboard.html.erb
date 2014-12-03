@@ -1,0 +1,68 @@
+<div id="content_dashboard">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>MON COMPTE</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <ul class="list-inline">
+          <li>Gestion des plannings moniteurs</li>
+          <li>Nos eleves</li>
+          <li>Données personnells</li>
+          <li><input></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container text-center">
+    <% @teachers.each do |teacher| %>
+      <div class="teacher_dashboard">
+        <div class="row">
+            <div class="col-xs-12 col-sm-2">
+              <div class="img_teacher_dashboard">
+                <%= image_tag teacher.picture.url(:thumb), :class => "img-circle" %>
+              </div>
+              <div class="name_teacher_dashboard">
+                <%= teacher.name %>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-9">
+              <div class="calendar_dashboard" >
+                <%= week_calendar do |date| %>
+                  <%= date.mday %>
+                  <% (6..23).each do |hour| %>
+                    <% lesson = Lesson.new(starts_at: date + hour.hours, ends_at: date + hour.hours + 3600) %>
+                    <% availability = lesson.find_availability_for_teacher(teacher.id) %>
+                    <%= form_for([@teacher, lesson]) do |f| %>
+                      <%= f.hidden_field :starts_at %>
+                      <%= f.hidden_field :ends_at %>
+                      <%= f.hidden_field :availability_id %>
+                      <% if availability.nil? %>
+                        <% school_dashboard_path(params[:school_id]) %>
+                      <% elsif availability.lesson_booked?(lesson.starts_at, lesson.ends_at) == false %>
+                        <%= f.submit "#{hour}h - #{hour+ 1}h", :class => 'btn btn-link' %>
+                        <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <%= link_to 'choisissez un nouveau moniteur', school_add_contract_path(@school) %>
+
+</div>
+

@@ -58,6 +58,8 @@
 </div>
 
 
+<%= link_to 'Mon dashboard', school_dashboard_path(@school) %>
+
 <% content_for(:js) do %>
   <%= javascript_tag do %>
     $(document).on('ready', function() {
@@ -70,3 +72,4 @@
     })
   <% end %>
 <% end %>
+
