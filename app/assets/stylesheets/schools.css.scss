@@ -15,33 +15,19 @@ body > h1 {
   text-align: center;
 }
 
-.teacher_dashboard {
-  margin: 10px 0px;
-  padding: 20px 0px;
+
+body > div.container > div > div > div > ul > li {
+  border: 2px solid lightgrey;
+  border-radius: 10px;
   background-color: white;
 }
 
-.img_teacher_dashboard {
-  padding: 15px 0px;
+body > div.container > div > div > div > ul > li > div > header {
+  background-color: transparent;
+  color: black;
 }
 
-.calendar-header {
-  width: 840px;
-  padding: 10px 0px;
-  text-align: center;
-  background-color: #333333;
-  color: white;
-  margin: none;
+body > div {
+  position: absolute;
 }
 
-.name_teacher_dashboard {
-  padding: 10px;
-}
-
-#content_dashboard {
-  background-color: #F0F1F5;
-}
-
-ul > li {
-  color: grey;
-}

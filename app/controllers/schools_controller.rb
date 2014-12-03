@@ -38,8 +38,6 @@ class SchoolsController < ApplicationController
   end
 
   def update
-    @school.update(school_params)
-    redirect_to schools_path
   end
 
   def add_teachers
