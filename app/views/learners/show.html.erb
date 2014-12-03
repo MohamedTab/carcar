@@ -31,18 +31,6 @@ mes moniteurs -->
   <% end %>
 </div>
 
-
-
-
-
-<br>
-
-
-<br>
-
-
-
-
 <br> </br>
 <br> </br>
 
@@ -61,7 +49,7 @@ mes moniteurs -->
         <tbody>
           <% @lessons.each do |lesson| %>
             <tr>
-              <td><%= lesson.starts_at %></td>
+              <td><%= lesson.starts_at.day     %></td>
               <td><%= lesson.ends_at %></td>
               <td><%= link_to 'Show', lesson %></td>
               <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>

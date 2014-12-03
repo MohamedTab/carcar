@@ -62,6 +62,11 @@ class SchoolsController < ApplicationController
     redirect_to school_path(@school)
   end
 
+  def dashboard
+    @school = School.find(params[:school_id])
+    @teachers = @school.teachers
+  end
+
   private
 
   private

@@ -19,9 +19,11 @@ Rails.application.routes.draw do
   devise_for :teachers, controllers: { registrations: "teachers/registrations" }
 
   resources :schools do
+    get '/dashboard' => 'schools#dashboard', as: :dashboard
     get '/teachers' => 'schools#add_teachers', as: :add_contract
     post '/teachers' => 'schools#create_contract', as: :create_contract
   end
+
 
   resources :teachers, execpt: [:new, :create, :edit, :update] do
       get '/teachers' => 'teachers#add_availability', as: :add_availability
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
       resources :lessons, only: [:create]
   end
 
-  root to: "home#index"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
