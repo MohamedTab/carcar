@@ -10,8 +10,8 @@ Rails.application.routes.draw do
       post '/schools' => 'learners#update_add_school', as: :update_add_school
     end
   end
+root :to => 'home#index'
 
-  get 'home/index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
