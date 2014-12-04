@@ -25,7 +25,7 @@ root :to => 'home#index'
   end
 
 
-  resources :teachers, execpt: [:new, :create, :edit, :update] do
+  resources :teachers do
       get '/teachers' => 'teachers#add_availability', as: :add_availability
 
       resources :lessons, only: [:create]
