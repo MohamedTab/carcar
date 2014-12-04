@@ -43,23 +43,19 @@
 
 
 <div class="buttons">
+  <h1>Je veux en profiter!</h1>
   <%= link_to 'Je suis Moniteur', new_teacher_registration_path, :class => "btn btn-primary"%>
-  <%= link_to 'Je suis inscrit dans une auto école', new_learner_registration_path, :class => "btn btn-primary"%>
-  <p>Vous êtes une auto-école ? contactez nous pour être référencés !</p>
+  <%= link_to 'Je suis élève', new_learner_registration_path, :class => "btn btn-primary"%>
+  <p>Vous êtes une auto-école ? saisissez-votre email pour être référencés !</p>
 </div>
 
 
-<div class="homemaps">
+ <div class="col-xs-12 text-center">
   <h2>Ecoles déjà connectées</h2>
-  <%= link_to 'Trouvez la plus proche de chez vous', schools_path %>
-  <br>
-  <br>
-
-
-  <div class="col-xs-12">
-    <div id="map" style="width: 80%; height: 400px;" class="container text-center">
-    </div>
+  <%= link_to 'Trouve ton auto-école', schools_path %>
+  <div id="map" style="width: 80%; height: 400px;" class="container text-center">
   </div>
+</div>
 
 <% content_for(:js) do %>
     <script type="text/javascript">
@@ -73,11 +69,10 @@
       })
     </script>
   <% end %>
-</div>
 
-<br>
-<br>
-<div class="lastin">
+
+
+<div class="text-center">
   <h2>Dernières écoles inscrites</h2>
 </div>
 <br>

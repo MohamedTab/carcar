@@ -2,41 +2,29 @@
   <div class="col-xs-12 text-center">
     <h1>Profil de <%= @teacher.name %></h1>
   </div>
-
-<div class="col-xs-12 col-sm-4">
-  <h3><%= @teacher.name %></h3>
-  <p><%= @teacher.email%></p>
+  <div class="col-xs-12 col-sm-4 row">
+    <div class="teacher text-center">
+      <%= image_tag @teacher.picture.url(:medium) %>
+      <h3><%= @teacher.name %></h3>
+      <p><%= @teacher.email%></p>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-8 text-center">
+    <h3>Mes lessons</h3>
+    mettres le tableau des leçons
+  </div>
 </div>
 
-<div class="col-xs-12 col-sm-4">
-  <h3>Enseigne à</h3>
-    <table>
-      <tbody>
-        <% @teacher.teacher_contracts.each do |teacher| %>
-        <tr>
-          <td><%= link_to teacher.school.name, school_path(teacher.school_id) %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-</div>
 
-<div class="col-xs-12 col-sm-4">
-  <%= image_tag @teacher.picture.url(:medium) %>
-</div>
+
 
 <div class="col-xs-12 text-center">
-  <h3>Mes lessons</h3>
-  mettres le tableau des leçons
+<h3> Ses disponibilités </h3>
 </div>
 
-<h3> Mon planning </h3>
 
-<%= link_to "Ajouter une disponibilité", teacher_add_availability_path(@teacher) %>
 
-<br>
-<br>
-<div class="calendar" >
+<div class="calendar col-xs-12 text-center teachercalendar" >
   <%= week_calendar do |date| %>
     <%= date.mday %>
     <% (6..23).each do |hour| %>
@@ -57,4 +45,6 @@
   <% end %>
 </div>
 
+
 <%= link_to "sign out", destroy_teacher_session_path, method: :delete %>
+<%= link_to "Ajouter une disponibilité", teacher_add_availability_path(@teacher) %>
