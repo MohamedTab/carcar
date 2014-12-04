@@ -8,6 +8,7 @@
   border: 1px solid #C7F1A3;
 }
 
+
 .form_teacher {
   padding: 20px;
   margin-right: 33%;
@@ -15,4 +16,50 @@
   background-color: white;
   border: 1px solid grey;
   border-radius: 5px;
+
+.teacher {
+  border: 2px solid lightgrey;
+  text-align: text-center;
+  position: center;
+  background-color: white;
+  border-radius: 10px;
+}
+
+body > div.container > div.col-xs-12.col-sm-4.row > div > img {
+  width: 100%;
+}
+
+.teachin {
+  border: 2px solid lightgrey;
+  text-align: text-center;
+  position: center;
+  background-color: white;
+  border-radius: 10px;
+}
+
+
+
+body > div.calendar.col-xs-12.text-center.teachercalendar > header {
+  width: 1050px;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  border: 2px solid lightgrey;
+}
+
+body > div.calendar.col-xs-12.text-center.teachercalendar > header > a, span {
+  font-size: 25px;
+  color: black;
+}
+
+body > div.calendar.col-xs-12.text-center.teachercalendar {
+  margin-left: 100px;
+}
+
+body > div.container > div.col-xs-12.col-sm-8.text-center {
+  border: 2px solid lightgrey;
+  text-align: text-center;
+  position: center;
+  background-color: white;
+  border-radius: 10px;
 }
