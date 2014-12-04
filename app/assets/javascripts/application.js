@@ -15,5 +15,7 @@
 //= require_bootsrap_sp_rockets
 //= require underscore
 //= require gmaps/google
-//= require_tree .
+
+
+//= require ./autocomplete
 
