@@ -1,31 +1,38 @@
-<h1>Profil du professeur</h1>
+<div class="container">
+  <div class="col-xs-12 text-center">
+    <h1>Profil de <%= @teacher.name %></h1>
+  </div>
 
-<%= image_tag @teacher.picture.url(:medium) %>
-<h2><%= @teacher.name %></h2>
+<div class="col-xs-12 col-sm-4">
+  <h3><%= @teacher.name %></h3>
+  <p><%= @teacher.email%></p>
+</div>
 
-<p><%= @teacher.email%></p>
+<div class="col-xs-12 col-sm-4">
+  <h3>Enseigne à</h3>
+    <table>
+      <tbody>
+        <% @teacher.teacher_contracts.each do |teacher| %>
+        <tr>
+          <td><%= link_to teacher.school.name, school_path(teacher.school_id) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
 
-<h3>Appartient à l'école</h3>
+<div class="col-xs-12 col-sm-4">
+  <%= image_tag @teacher.picture.url(:medium) %>
+</div>
 
-<%= link_to "sign out", destroy_teacher_session_path, method: :delete %>
+<div class="col-xs-12 text-center">
+  <h3>Mes lessons</h3>
+  mettres le tableau des leçons
+</div>
 
-<table>
- <thead>
-   <tr>
-     <th>Name</th>
-     <th>manager de l'école</th>
+<h3> Mon planning </h3>
 
-     <th colspan="3"></th>
-   </tr>
- </thead>  <tbody>
-   <% @teacher.teacher_contracts.each do |teacher| %>
-     <tr>
-       <td><%= teacher.school.name %></td>
-       <td><%= teacher.school.manager_name %></td>
-     </tr>
-   <% end %>
- </tbody>
-</table><br>
+<%= link_to "Ajouter une disponibilité", teacher_add_availability_path(@teacher) %>
 
 <br>
 <br>
@@ -50,12 +57,4 @@
   <% end %>
 </div>
 
-
-<br>
-<br>
-
-<h3> Mon planning </h3>
-<%= link_to "Mes dispo", teacher_add_availability_path(@teacher) %>
-
-<br>
-<br>
+<%= link_to "sign out", destroy_teacher_session_path, method: :delete %>
