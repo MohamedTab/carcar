@@ -22,7 +22,8 @@
             <% @lessons.each do |lesson| %>
               <div>
                 <% if lesson.starts_at.day == date.mday %>
-                  <%= "#{lesson.starts_at.hour}h - #{lesson.ends_at.hour}h" %>
+                  <%= "#{lesson.starts_at.hour}h - #{lesson.ends_at.hour}h" %> avec
+                <strong> <%= lesson.availability.teacher.name %></strong>
                 <% end %>
               </div>
             <% end %>
