@@ -8,4 +8,12 @@ class Lesson < ActiveRecord::Base
      availability
   end
 
+  after_create :send_booking_confirmation_email
+
+  private
+
+  def send_booking_confirmation_email
+    LearnerMailer.booking_confirmation(learner).deliver
+  end
+
 end
