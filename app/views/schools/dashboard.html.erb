@@ -44,7 +44,6 @@
                           <% school_dashboard_path(params[:school_id]) %>
                         <% elsif availability.lesson_booked?(lesson.starts_at, lesson.ends_at) == false %>
                           <%= f.submit "#{hour}h - #{hour+ 1}h", :class => 'btn btn-link' %>
-                        <% elsif availability.lesson_booked?(lesson.starts_at, lesson.ends_at) %>
                         <% end %>
                     <% end %>
                   <% end %>
@@ -55,7 +54,6 @@
       </div>
     <% end %>
   </div>
-
 
 
   <br>

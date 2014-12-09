@@ -3,10 +3,6 @@
   padding: 10px 10px;
 }
 
-.list-inline {
-  background-color: #313030;
-  color: white;
-}
 
 .calendar-header {
   width: 525px;
@@ -49,11 +45,6 @@ th {
   border-left: solid 1px #A9A9A9;
 }
 
-ul {
-  list-style: none;
-}
-
-
 .teacher_show_learner {
   background-color: white;
   border: 1px solid #A9A9A9;
@@ -61,8 +52,16 @@ ul {
   padding-top: 10px;
 }
 
+.navbar_learner {
+  background-color: #313030;
+  color: white;
+  margin-left: 0px;
+}
 .list_navbar_learner {
-  padding: 10px 75px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-right: 100px;
+  list-style: none;
 }
 
 .dispo_teacher_show_learner {

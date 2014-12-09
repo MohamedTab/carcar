@@ -7,7 +7,7 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <ul class="list_navbar_learner list-inline">
+      <ul class="list-inline navbar_learner">
         <li class="list_navbar_learner"><%= link_to 'Mon planning', learner_path(@learner) %></li>
         <li class="list_navbar_learner"><%= link_to 'Données personnells', edit_learner_registration_path %></li>
         <li class="list_navbar_learner">Historique de mes leçons</li>
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
-      <h3 class="text-center"> Je reserve une heure </h3>
+      <h2 class="text-center"> Je reserve une heure </h2>
         <% if @learner.school.nil? %>
           "Ajouter une école pour consulter le planning de vos moniteurs"
         <% else %>
@@ -41,6 +41,12 @@
               <li class="img_teacher_show_learner"> <%= image_tag teacher.picture.url(:thumb), :class => "img-circle" %>
               </li>
               <li class="dispo_teacher_show_learner"> Prochaines disponibilitées </li>
+              <li class="dispo_teacher_show_learner">  </li>
+              <li class="dispo_teacher_show_learner">
+
+
+
+              </li>
             </ul>
           <% end %>
         <%end %>

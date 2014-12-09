@@ -16,6 +16,7 @@ class LearnersController < ApplicationController
 
   def show
     # @learner = current_user.id
+    @availabilities = Availability.all
     @learner = Learner.find(params[:id])
     @schools = School.all
     @lessons = @learner.lessons
