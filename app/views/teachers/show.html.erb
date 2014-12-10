@@ -26,10 +26,13 @@
 
 <div class="calendar col-xs-12 text-center teachercalendar" >
   <%= week_calendar do |date| %>
+  <div class="day text-center" style= "padding-top: 5px; height: 30px;">
     <%= date.mday %>
+    </div>
     <% (6..23).each do |hour| %>
       <% lesson = Lesson.new(starts_at: date + hour.hours, ends_at: date + hour.hours + 3600) %>
       <% availability = lesson.find_availability_for_teacher(params[:id]) %>
+      <div class="day" style="height: 30px;">
       <%= form_for([@teacher, lesson]) do |f| %>
         <%= f.hidden_field :starts_at %>
         <%= f.hidden_field :ends_at %>
@@ -41,6 +44,7 @@
             <%= f.submit "#{hour}h - #{hour + 1} h", :class => 'btn btn-link' %>
         <% end %>
       <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>
