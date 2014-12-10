@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     end
   end
 root :to => 'home#index'
+get '/about_us' => 'home#about_us', as: :about_us
+
 
 
   devise_for :admin_users, ActiveAdmin::Devise.config
