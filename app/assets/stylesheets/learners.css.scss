@@ -25,11 +25,12 @@ th {
 }
 
 .day {
-  text-align: center;
-  background-color: #E0F7CC;
-  border: solid 1px #C7F1A3;
+
+  background-color: #222A2D;
+  border: solid 1px #222A2D;
   width: 150px;
   height: 75px;
+  color: #EF5C29;
 }
 
 .day_a {
@@ -73,4 +74,8 @@ ul {
 
 .sign_out_show_learner {
   margin-left: 1200px;
+}
+
+.btn-link {
+  color: white;
 }
