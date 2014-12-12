@@ -28,6 +28,7 @@ class TeachersController < ApplicationController
   def teacher_params
     params.require(:teacher).permit(:name)
   end
+
 end
 
 

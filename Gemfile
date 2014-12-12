@@ -63,3 +63,4 @@ gem "geocoder"
 gem "gmaps4rails"
 gem "rails-assets-underscore"
 
+gem "letter_opener", group: :development

@@ -3,10 +3,6 @@
   padding: 10px 10px;
 }
 
-.list-inline {
-  background-color: #313030;
-  color: white;
-}
 
 .calendar-header {
   width: 525px;
@@ -25,14 +21,12 @@ th {
 }
 
 .day {
-
-  background-color: #222A2D;
-  border: solid 1px #222A2D;
-  width: 150px;
-  height: 75px;
-  color: #EF5C29;
+background-color: #222A2D;
+border-bottom: solid 1px #F0F1F5;
+width: 150px;
+height: 75px;
+color: #EF5C29;
 }
-
 .day_a {
   text-align: center;
   background-color: red;

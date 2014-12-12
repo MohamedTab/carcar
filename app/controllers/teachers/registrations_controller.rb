@@ -11,8 +11,4 @@ class Teachers::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(teacher)
     teacher_path(teacher)
   end
-
-  def after_sign_in_path_for(teacher)
-    teacher_path(teacher)
-  end
 end
