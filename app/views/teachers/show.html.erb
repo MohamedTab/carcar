@@ -38,7 +38,7 @@
                   <p style="color: #868686;"> <%= hour %>h - <%= hour + 1 %>h </p>
                   <% teacher_path(params[:id]) %>
                 <% elsif availability.lesson_booked?(lesson.starts_at, lesson.ends_at) == false && date + hour.hours > Time.now %>
-                  <%= f.submit "#{hour}h - #{hour + 1} h", :class => 'btn btn-link' %>
+                   <%= f.submit "#{hour}h - #{hour + 1} h", :class => 'btn btn-link' %>
                 <% elsif availability.lesson_booked?(lesson.starts_at, lesson.ends_at) && (date + hour.hours >= Time.now)  %>
                     <p> Booked </p>
                 <% end %>
