@@ -1,21 +1,8 @@
-<div class="container text-center">
-  <div class="row">
-    <% School.last(4).each do |school| %>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <h3><%= link_to school.name, school %></h3>
-        <h4><%= school.address %></h4>
-        <p><%= school.manager_name %></p>
-        <div class="photo_school">
-          <%= link_to image_tag(school.picture.url(:medium)), school %>
-        </div>
-      </div>
-    <% end %>
+ <div class="col-xs-12 col-sm-8">
+  <%= link_to 'Trouve ton auto-école', schools_path %>
+  <div id="map" style="width: 100%; height: 650px;" class="container">
   </div>
 </div>
-
-  <div class="col-xs-12">
-    <div id="map" style="width: 80%; height: 400px;" class="container text-center"></div>
-  </div>
 
 <% content_for(:js) do %>
     <script type="text/javascript">
@@ -29,6 +16,35 @@
       })
     </script>
   <% end %>
+
+
+                            <!-- Resultat des ecoles -->
+
+                            <!-- Resultat des ecoles -->
+
+
+<div class="container text-center">
+  <div class="row">
+    <% @schools.each do |school| %>
+      <div class="col-xs-12 col-sm-3 result_school">
+        <div class="row">
+          <div class="col-xs-4 photo_school">
+            <%= link_to image_tag(school.picture.url(:thumb)), school %>
+          </div>
+          <div class="col-xs-8">
+            <div class="row">
+            <div class="col-xs-12">
+            <h5><%= link_to school.name, school %></h5>
+            <h6><%= school.address %></h6>
+            <input id="input-1" class="rating" data-min="0" data-max="5" data-step="1">
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 
 
