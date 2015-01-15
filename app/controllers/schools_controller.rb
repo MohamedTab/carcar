@@ -2,7 +2,7 @@ class SchoolsController < ApplicationController
   before_action :set_school, only: [:show, :edit, :update, :destroy]
   def index
     if params[:locality]
-      @schools = School.where({ locality: params[:locality] })
+      @schools = School.search(params[:locality])
     else
       @schools = School.order("created_at DESC")
     end
