@@ -1,7 +1,11 @@
 class SchoolsController < ApplicationController
   before_action :set_school, only: [:show, :edit, :update, :destroy]
   def index
-    @schools = School.all
+    if params[:locality]
+      @schools = School.where({ locality: params[:locality] })
+    else
+      @schools = School.order("created_at DESC")
+    end
     @markers = Gmaps4rails.build_markers(@schools) do |school, marker|
       marker.lat school.latitude
       marker.lng school.longitude
