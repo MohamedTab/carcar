@@ -9,13 +9,27 @@
     <div class="row">
       <div class="col-xs-12 col-sm-offset-2 col-sm-8 search_homepage">
         <h6> <strong> Cherchez parmi plus de 2000 auto-écoles dans toutes l'île-de-France </strong> </h6>
-        <form class="form-inline">
+
+
+       <%= form_tag(schools_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+        <div class="input-append">
+        <%= text_field_tag :locality, params[:locality], class: "form-control", placeholder: "Entrer votre ville" %>
+        <button class="btn btn-warning" type="submit">Rechercher</button>
+        </div>
+        <% end %>
+
+
+
+
+
+
+       <!--  <form class="form-inline">
           <div class="form-group">
             <label for="search_homepage"><i class="fa fa-map-marker" style= "font-size: 28px"></i></label>
             <input type="text" class="form-control" id="search_homepage" placeholder="Entrer votre ville...">
           </div>
           <button type="submit" class="btn btn-warning">Rechercher</button>
-        </form>
+        </form> -->
       </div>
     </div>
   </div>
