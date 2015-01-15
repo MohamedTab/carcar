@@ -1,6 +1,6 @@
 // Set your navbar general settings
-$color: black;
-$bg: rgba(255, 255, 255, 0);
+$color: #FFFFFF;
+$bg: #222A2D;
 $height: 60px;
 $vertical-padding: 5px;
 $horizontal-padding: 20px;
@@ -10,7 +10,7 @@ $border-bottom-color: none;
 // Set your navbar button
 $btn-height: 40px;
 $btn-bg: #E1222D;
-$btn-color: white;
+$btn-color: #FE504F;
 $btn-horizontal-padding: 10px;
 $btn-top-border-width: 0;
 $btn-top-border-color: transparent;
@@ -40,6 +40,7 @@ $profile-border-width: 2px;
   padding-right: $horizontal-padding;
   border-bottom: $border-bottom-width solid $border-bottom-color;
   min-height: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .navbar-wagon .navbar-nav > li > a {
@@ -158,4 +159,10 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
     padding-top: 0;
     padding-bottom: 0;
   }
+}
+
+.espace {
+  border-right: 1px solid white;
+  height: 12px;
+  margin-top: 30px
 }
