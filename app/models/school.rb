@@ -13,6 +13,6 @@ class School < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
   def self.search(search)
-      where('locality iLIKE ?', "%#{search}%")
-    end
+    where('locality iLIKE ?', "%#{search}%")
+  end
 end
