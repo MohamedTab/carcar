@@ -67,9 +67,17 @@ body > div.buttons {
   padding-top: 15px;
 }
 
+.border_top_content_school_msg > h2 {
+  color: #242932;
+}
+
 .top_content_school_msg {
   padding-top: 30px;
   padding-bottom: 15px;
+}
+
+.top_content_school_msg > h2 {
+  color: #242932;
 }
 
 .content_school_msg_right {
@@ -79,6 +87,10 @@ body > div.buttons {
   padding-bottom: 15px;
   border: 1px solid #D8D8D8;
   border-radius: 2px;
+}
+
+.content_school_msg_right > h2 {
+  color: #242932;
 }
 
 .content_school_msg_right > h4 {

@@ -1,6 +1,6 @@
 // Set your navbar general settings
-$color: #FFFFFF;
-$bg: #222A2D;
+$color: #F2F2F3;
+$bg: #242932;
 $height: 60px;
 $vertical-padding: 5px;
 $horizontal-padding: 20px;
@@ -51,7 +51,7 @@ $profile-border-width: 2px;
 }
 
 .navbar-wagon .navbar-nav > li > a:hover {
-  color: $color;
+  color: red;
   line-height: $height;
   padding-top: $vertical-padding;
   padding-bottom: $vertical-padding;
@@ -162,7 +162,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
 }
 
 .espace {
-  border-right: 1px solid white;
+  border-right: 1px solid #F2F2F3;
   height: 12px;
   margin-top: 30px
 }
