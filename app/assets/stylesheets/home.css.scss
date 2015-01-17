@@ -81,21 +81,24 @@ body > div.buttons {
 }
 
 .content_school_msg_right {
-  background-color: #F7F7F7;
+  background-color: #242932;
   margin-top: 25px;
   padding-top: 5px;
   padding-bottom: 15px;
   border: 1px solid #D8D8D8;
-  border-radius: 2px;
+  border-radius: 4px;
+  color: white;
 }
 
 .content_school_msg_right > h2 {
-  color: #242932;
+  color: #EC971F;
 }
 
 .content_school_msg_right > h4 {
   padding-top: 10px;
+  color: #F0AD4E;
 }
+
 
 .contact {
   margin-top: 30px;
