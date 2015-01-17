@@ -55,13 +55,13 @@ th {
 .navbar_learner {
   background-color: #313030;
   color: white;
-  margin-left: 0px;
-}
-.list_navbar_learner {
+  margin-bottom: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
-  margin-right: 100px;
-  list-style: none;
+}
+
+.navbar_learner > a {
+  color: white;
 }
 
 .dispo_teacher_show_learner {

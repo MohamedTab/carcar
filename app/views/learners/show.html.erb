@@ -5,32 +5,27 @@
       <h3>MON COMPTE</h3>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <ul class="list-inline navbar_learner">
-        <li class="list_navbar_learner"><%= link_to 'Mon planning', learner_path(@learner) %></li>
-        <li class="list_navbar_learner"><%= link_to 'Données personnells', edit_learner_registration_path %></li>
-        <li class="list_navbar_learner">Historique de mes leçons</li>
-      </ul>
+  <div class="row text-center">
+    <div class="col-xs-12 col-sm-4 navbar_learner">
+      <%= link_to 'Mon planning', learner_path(@learner) %>
+    </div>
+    <div class="col-xs-12 col-sm-4 navbar_learner">
+      <%= link_to 'Données personnells', edit_learner_registration_path %>
+    </div>
+    <div class="col-xs-12 col-sm-4 navbar_learner">
+      <%= link_to 'Historique de mes leçon', edit_learner_registration_path %>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-8">
-      <div class="calendar">
-        <%= week_calendar do |date| %>
-          <%= date.mday %>
-            <% @lessons.each do |lesson| %>
-              <div>
-                <% if lesson.starts_at.day == date.mday %>
-                  <%= "#{lesson.starts_at.hour}h - #{lesson.ends_at.hour}h" %> avec
-                <strong> <%= lesson.availability.teacher.name %></strong>
-                <% end %>
-              </div>
-            <% end %>
-        <% end %>
-      </div>
+    <div class="col-xs-12 col-sm-6">
+      <h3> <strong> Vos prochaines heures de conduite </strong></h3>
+      <% @lessons.each do |lesson| %>
+        <p> <%= lesson.starts_at.day %> </p>
+        <p> <%= "#{lesson.starts_at.hour}h - #{lesson.ends_at.hour}h" %> </p>
+        <p>avec <strong> <%= lesson.availability.teacher.name %></strong> </p>
+      <% end %>
     </div>
-    <div class="col-xs-12 col-sm-4">
+    <div class="col-xs-12 col-sm-6">
       <h2 class="text-center"> Je reserve une heure </h2>
         <% if @learner.school.nil? %>
           "Ajouter une école pour consulter le planning de vos moniteurs"
@@ -43,9 +38,6 @@
               <li class="dispo_teacher_show_learner"> Prochaines disponibilitées </li>
               <li class="dispo_teacher_show_learner">  </li>
               <li class="dispo_teacher_show_learner">
-
-
-
               </li>
             </ul>
           <% end %>
