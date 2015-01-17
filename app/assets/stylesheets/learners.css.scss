@@ -48,8 +48,12 @@ th {
 .teacher_show_learner {
   background-color: white;
   border: 1px solid #A9A9A9;
-  border-radius: 5px;
-  padding-top: 10px;
+  border-radius: 2px;
+  padding-left: 0px;
+  margin-left: 22px;
+  margin-right: 22px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .navbar_learner {
@@ -72,4 +76,29 @@ th {
 
 .sign_out_show_learner {
   margin-left: 1200px;
+}
+
+.hour_booked {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+
+.hours_booked {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.hours_booked h3 {
+  padding-bottom: 20px;
+}
+
+.btn_cancel {
+  margin-bottom: 2px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.border_between_date_btn {
+  border-left: 1px solid black;
 }
