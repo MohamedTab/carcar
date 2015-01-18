@@ -17,14 +17,14 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-8">
+    <div class="col-xs-12 col-sm-offset-1 col-sm-4 hours_booked">
       <div class="row">
         <h2 class="text-center"; style="padding-bottom: 20px;"> <strong> Je reserve une heure </strong></h2>
           <% if @learner.school.nil? %>
             "Ajouter une école pour consulter le planning de vos moniteurs"
           <% else %>
             <% @teachers.each do |teacher| %>
-              <div class="col-xs-12 col-sm-5 teacher_show_learner">
+              <div class="col-xs-12 teacher_show_learner">
                 <div class="row">
                   <div class="col-xs-4 text-center">
                     <%= image_tag teacher.picture.url(:thumb) %>
@@ -38,7 +38,7 @@
                         <p style="text-decoration: underline;"> <strong> Prochaines disponibilitées : </strong></p>
                       </div>
                       <div class="col-xs-12">
-                        <p style="color: #242932;"> <strong>02/02/2015 à 9h00 </strong></p>
+                        <p style="color: #242932;"> <strong>02/02/2015 à 9h00   >> </strong> <%= link_to 'Reserver', teacher_path(params[:id]) %></p>
                       </div>
                     </div>
                   </div>
@@ -48,11 +48,12 @@
           <%end %>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-4 hours_booked">
+    <div class="col-xs-12 col-sm-offset-2 col-sm-4 hours_booked">
       <div class="a">
       <h3 class="text-center"> <strong> Vos reservation ! </strong></h3>
       </div>
         <% @lessons.each do |lesson| %>
+        <% if lesson.starts_at >= Time.now %>
         <div class="row hour_booked">
           <div class="col-xs-8">
             <p> <strong><%= lesson.starts_at %> de <%= "#{lesson.starts_at.hour}h - #{lesson.ends_at.hour}h" %> </strong> </p>
@@ -67,6 +68,7 @@
             </div>
           </div>
         </div>
+        <% end %>
         <% end %>
     </div>
   </div>
