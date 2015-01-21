@@ -1,26 +1,43 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <h2><strong>Espace élèves </strong></h2>
+      <h3><strong>Vous n'êtes pas encore inscrit</strong></h3>
+      <%= render "learners/shared/links" %>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-    <%= render "learners/shared/links" %>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-6">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="field">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
+          </div>
+        </div>
+          <% if devise_mapping.rememberable? -%>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+        <div class="actions">
+          <%= f.submit "Log in" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
-
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

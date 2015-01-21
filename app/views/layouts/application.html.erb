@@ -6,6 +6,7 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
@@ -15,6 +16,8 @@
 
     <p class="alert"><%= alert %></p>
       <%= yield %>
+
+  <%= render partial: "shared/footer" %>
     <!-- Include Google Maps JS API -->
       <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;key=AIzaSyBI-f063Qy8DRagJw9HejqFIoB9ccCAq2s">
@@ -22,6 +25,7 @@
       <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
 
       <%= javascript_include_tag 'application' %>
+
       <%= yield(:js) %>
     </body>
 </html>

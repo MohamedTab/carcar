@@ -24,4 +24,12 @@ class Teacher < ActiveRecord::Base
       false
     end
   end
+
+    after_create :send_welcome_email
+
+  private
+
+  def send_welcome_email
+    TeacherMailer.welcome(self).deliver
+  end
 end

@@ -8,7 +8,7 @@
   width: 525px;
   padding: 10px 0px;
   text-align: center;
-  background-color: #333333;
+  background-color: #F57745;
   color: white;
 }
 
@@ -78,6 +78,7 @@ th {
   margin-left: 1200px;
 }
 
+
 .hour_booked {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -108,6 +109,7 @@ th {
   border-right: 1px solid black;
 }
 
+    // BTN HOVER CSS EFFECT
 .hvr-glow {
   display: inline-block;
   vertical-align: middle;
@@ -122,12 +124,15 @@ th {
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
 }
+
 .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 }
 
+ // END BTN EFFECT
+
 .hvr-underline-from-center {
-  display: inline-block;
+ display: inline-block;
   vertical-align: middle;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -138,6 +143,7 @@ th {
   position: relative;
   overflow: hidden;
 }
+
 .hvr-underline-from-center:before {
   content: "";
   position: absolute;
@@ -154,10 +160,69 @@ th {
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
+
 .hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
   left: 0;
   right: 0;
 }
+
+.hvr-hollow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: background;
+  transition-property: background;
+  box-shadow: inset 0 0 0 4px #e1e1e1, 0 0 1px rgba(0, 0, 0, 0);
+  /* Hack to improve aliasing on mobile/tablet devices */
+}
+.hvr-hollow:hover, .hvr-hollow:focus, .hvr-hollow:active {
+  background: none;
+}background: grey;
+}
+
+
+
+.hvr-icon-forward {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  padding-right: 2.2em;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+.hvr-icon-forward:before {
+  content: "\f138";
+  position: absolute;
+  right: 1em;
+  padding: 0 1px;
+  font-family: FontAwesome;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-icon-forward:hover:before, .hvr-icon-forward:focus:before, .hvr-icon-forward:active:before {
+  -webkit-transform: translateX(4px);
+  transform: translateX(4px);
+}
+
 
 .hvr-fade {
   display: inline-block;
@@ -178,3 +243,5 @@ th {
   background-color: #2098d1;
   color: white;
 }
+
+
