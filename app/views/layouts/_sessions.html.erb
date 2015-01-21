@@ -5,7 +5,7 @@
   <li><%= link_to current_learner.last_name + " " + current_learner.first_name, learner_path(current_learner) %></li>
   <li><%= link_to 'Sign out', destroy_learner_session_path, method: 'delete' %></li>
 <% else %>
-  <li><%= link_to 'Espace moniteur', new_teacher_registration_path %></li>
+  <li><%= link_to 'Espace moniteur', new_teacher_registration_path, class: "hvr-underline-from-center" %></li>
   <li class="espace"> </li>
-  <li><%= link_to 'Espace élève', new_learner_registration_path %></li>
+  <li><%= link_to 'Espace élève', new_learner_registration_path, class: "hvr-underline-from-center" %></li>
 <% end %>

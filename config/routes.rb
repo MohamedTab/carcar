@@ -10,7 +10,8 @@ Rails.application.routes.draw do
       post '/schools' => 'learners#update_add_school', as: :update_add_school
     end
   end
-root :to => 'home#index'
+# root :to => 'home#index'
+root :to => 'home#index_test'
 get '/about_us' => 'home#about_us', as: :about_us
 
 
