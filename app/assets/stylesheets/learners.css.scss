@@ -86,9 +86,10 @@ th {
 }
 
 .hours_booked {
+  border: 1px solid #FDFDFD;
   margin-top: 20px;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .hours_booked h3 {
@@ -182,10 +183,11 @@ th {
   box-shadow: inset 0 0 0 4px #e1e1e1, 0 0 1px rgba(0, 0, 0, 0);
   /* Hack to improve aliasing on mobile/tablet devices */
 }
+
 .hvr-hollow:hover, .hvr-hollow:focus, .hvr-hollow:active {
   background: none;
-}background: grey;
 }
+
 
 
 

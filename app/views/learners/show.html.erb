@@ -17,14 +17,14 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-offset-1 col-sm-4 hours_booked hvr-glow">
+    <div class="col-xs-12 col-sm-offset-1 col-sm-4 hours_booked">
       <div class="row">
         <h2 class="text-center"; style="padding-bottom: 20px;"> <strong> Je reserve une heure </strong></h2>
           <% if @learner.school.nil? %>
             "Ajouter une école pour consulter le planning de vos moniteurs"
           <% else %>
             <% @teachers.each do |teacher| %>
-              <div class="col-xs-12 teacher_show_learner">
+              <div class="col-xs-12 teacher_show_learner  hvr-glow">
                 <div class="row">
                   <div class="col-xs-4 text-center">
                     <%= image_tag teacher.picture.url(:thumb) %>
