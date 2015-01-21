@@ -1,9 +1,13 @@
 body > div.header {
   text-align: center;
-  height: 380px;
-  background-image: image-url('homepic.jpeg');
+  width: 100%;
+  height: 100%;
+  background-image: image-url('homepage_test.jpg');
   background-size: cover;
   color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 body {
