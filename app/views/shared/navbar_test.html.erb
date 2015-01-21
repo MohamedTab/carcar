@@ -22,7 +22,7 @@
         </li>
         <li>
           <% if teacher_signed_in? %>
-            <%= image_tag current_teacher.picture, id: "profile-pic" %>
+            <%= image_tag current_teacher.picture, id: "profile-pic"%>
           <% elsif learner_signed_in? %>
             <%= image_tag current_learner.picture, id: "profile-pic" %>
           <% else %>
