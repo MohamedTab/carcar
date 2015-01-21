@@ -6,6 +6,7 @@ class Teacher < ActiveRecord::Base
 
   has_many :teacher_contracts
   has_many :schools, through: :teacher_contracts
+  has_many :availabilities
 
   validates :email, uniqueness: true
 
