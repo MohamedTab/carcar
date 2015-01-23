@@ -9,6 +9,7 @@
       <%= render "learners/shared/links" %>
     </div>
     <div class="col-xs-12 col-sm-offset-1 col-sm-6">
+    <h2><strong>S'inscrire</strong></h2>
       <div class="form-group">
         <div class="field">
           <%= f.label :first_name %><br />
@@ -86,7 +87,7 @@
         </div>
       </div>
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit "Sign up", :class => "btn btn-warning" %>
     </div>
     <% end %>
   </div>
