@@ -6,6 +6,7 @@
       <%= render "learners/shared/links" %>
     </div>
     <div class="col-xs-12 col-sm-offset-1 col-sm-6">
+    <h2><strong>Se connecter</strong></h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group">
           <div class="field">
@@ -26,16 +27,12 @@
             </div>
           <% end -%>
         <div class="actions">
-          <%= f.submit "Log in" %>
+          <%= f.submit "Log in", :class => "btn btn-warning" %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 <br>
