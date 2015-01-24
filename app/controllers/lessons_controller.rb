@@ -1,6 +1,7 @@
 class LessonsController < InheritedResources::Base
 
   def create
+    if learner_signed_in?
       lesson = current_learner.lessons.build(lesson_params)
       teacher_id = params[:teacher_id]
       if lesson.find_availability_for_teacher(teacher_id)
@@ -10,12 +11,21 @@ class LessonsController < InheritedResources::Base
         flash[:error] = "Sa marsh pa lol NEGER"
         redirect_to learner_path(current_learner)
       end
+    else
+      if lesson.find_availability_for_teacher(teacher_id)
+        lesson.save
+        redirect_to  school_dashboard_path
+      else
+        flash[:error] = "Sa marsh pa lol NEGER"
+        redirect_to school_dashboard_path(current_learner)
+      end
+    end
   end
 
 
   private
 
     def lesson_params
-      params.require(:lesson).permit(:starts_at, :ends_at)
+      params.require(:lesson).permit(:starts_at, :ends_at, :availability_id)
     end
 end

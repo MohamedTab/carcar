@@ -1,57 +1,118 @@
 <div class="header">
-  <div class="col-xs-12">
-    <h1>Carcar, mon auto-école connectée</h1>
-    <h3>Carcar s'adresse aux jeunes conducteurs et aux auto-écoles qui veulent se simplifier la vie</h3>
+  <div class="contenair">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1> <strong>Trouvez votre auto-école pret de chez vous </strong></h1>
+        <h3> <strong>  Et reservez vos heures de conduite immédiatement ! </strong></h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-offset-2 col-sm-8 search_homepage">
+        <h6> <strong> Cherchez parmi plus de 2000 auto-écoles dans toutes l'île-de-France </strong> </h6>
+
+
+       <%= form_tag(schools_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+        <div class="input-append">
+        <%= text_field_tag :locality, params[:locality], class: "form-control", placeholder: "Entrer votre ville" %>
+        <button class="btn btn-warning" type="submit">Rechercher</button>
+        </div>
+        <% end %>
+
+
+
+
+
+
+       <!--  <form class="form-inline">
+          <div class="form-group">
+            <label for="search_homepage"><i class="fa fa-map-marker" style= "font-size: 28px"></i></label>
+            <input type="text" class="form-control" id="search_homepage" placeholder="Entrer votre ville...">
+          </div>
+          <button type="submit" class="btn btn-warning">Rechercher</button>
+        </form> -->
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="light-grey-bg">
   <div class="container text-center">
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="col-xs-12 col-sm-4">
         <div class="feature">
-          <h2>Visibilité accrue</h2>
-          <%= image_tag "gogogo.png" %>
-          <p>Référencez votre école</p>
+          <h2>Choisissez votre auto-école </h2>
+          <%= image_tag "loupe.png" %>
+          <p> Renseignez vous sur les auto-écoles autours de chez vous </p>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="col-xs-12 col-sm-4">
         <div class="feature">
-          <h2>Planning en ligne</h2>
-          <%= image_tag "planning.png" %>
+          <h2>Je sais pas trop quoi mettre encore</h2>
+          <%= image_tag "hammock.png" %>
           <p>Réservez depuis n'importe où</p>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="col-xs-12 col-sm-4">
         <div class="feature">
-          <h2>Simple</h2>
-          <%= image_tag "hammock.png" %>
-          <p>Un utilisation intuitive</p>
+          <h2> Un service 100% gratuit </h2>
+          <%= image_tag "planning.png" %>
+          <p> Reservez vos heures de conduite en ligne sans aucun frais</p>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <div class="feature">
-          <h2>Rapide</h2>
-          <%= image_tag "clock.png" %>
-          <p>Gagnez du temps</p>
+
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8">
+        <div class="row">
+          <div class="text-left">
+            <div class="col-xs-12 col-sm-8 top_content_school_msg">
+              <h2><strong>VOUS ETES UNE AUTO-ECOLE? </strong> </h2>
+              <p> Inscrivez-vous sur Carcar! </p>
+              <p> Découvrez comment notre service peut vous aider à développer votre auto-école et simplifier la vie de vos éleves.  </p>
+              <p> <strong>  <%= link_to '> Rejoindre carcar',about_us_path %></strong> </p>
+            </div>
+            <div class="col-xs-12 col-sm-4 text-center top_content_school_msg">
+              <%= image_tag "car.png" %>
+            </div>
+            <div class="col-xs-12 col-sm-4 text-center top_content_school_msg">
+              <%= image_tag "route.png" %>
+            </div>
+            <div class="col-xs-12 col-sm-8 border_top_content_school_msg">
+              <h2><strong> BIENTOT DANS VOTRE VILLE</strong> </h2>
+              <p> Carcar est en train d'ouvrir son service dans toute la France... </p>
+              <p>Vous êtes impatients de pouvoir en profiter ?
+              Faites-le nous savoir en votant pour votre ville ! </p>
+              <p> <strong>  <%= link_to '> Votez pour notre prochaine destination',about_us_path %></strong> </p>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="content_school_msg_right">
+          <h2><strong>Vous allez adorer Carcar !</strong></h2>
+          <h4> <strong> Des taux de reussite officiel </strong></h4>
+          <p> Choisissez l'auto-école qui vous convient et augmentez vos chance de réussite </p>
+          <h4> <strong> Les éléves donnent leur avis </strong> </h4>
+          <p> Obtenez des avis et des commentaires sur la qualité de l'enseignement et le fonctionnement d'une auto-école </p>
+          <h4> <strong> Réservez vos heures en ligne </strong> </h4>
+          <p> Simplifiez vous la vie en assurant la gestion de vos de heures de conduite ou que vous soyer! </p>
+          <strong><%= link_to " > Decouvrez en plus!", about_us_path %> </strong>
+        </div>
+      </div>
+      <div class="col-xs-12 text-center contact">
+      <p> <strong> Contactez CarCar <i class="fa fa-phone"></i> 06 89 51 13 25 ou <%= link_to "contact@carcar.fr" %> </strong></p>
       </div>
     </div>
   </div>
 </div>
 
-
-
-<div class="buttons">
-  <h1>Je veux en profiter!</h1>
-  <%= link_to 'Je suis Moniteur', new_teacher_registration_path, :class => "btn btn-primary"%>
-  <%= link_to 'Je suis élève', new_learner_registration_path, :class => "btn btn-primary"%>
-  <p>Vous êtes une auto-école ? saisissez-votre email pour être référencés !</p>
-</div>
-
-
  <div class="col-xs-12 text-center">
-  <h2>Ecoles déjà connectées</h2>
+  <h2><strong> Ecoles déjà référencées </strong></h2>
   <%= link_to 'Trouve ton auto-école', schools_path %>
   <div id="map" style="width: 80%; height: 400px;" class="container text-center">
   </div>
@@ -72,13 +133,13 @@
 
 
 
-<div class="text-center">
+<!-- <div class="text-center">
   <h2>Dernières écoles inscrites</h2>
 </div>
 <br>
 <br>
 
-<div class="container text-center">
+<!-- <div class="container text-center">
   <div class="row">
     <% School.last(4).each do |school| %>
       <div class="col-xs-12 col-sm-6 col-md-3">
@@ -92,5 +153,5 @@
     <% end %>
   </div>
 </div>
-
+ --> -->
 

@@ -40,6 +40,7 @@
                       <%= f.hidden_field :starts_at %>
                       <%= f.hidden_field :ends_at %>
                       <%= f.hidden_field :availability_id %>
+
                       <% if availability.nil? %>
                         <% school_dashboard_path(params[:school_id]) %>
                       <% elsif availability.lesson_booked?(lesson.starts_at, lesson.ends_at) == false && date + hour.hours > Time.now %>
@@ -54,7 +55,6 @@
       </div>
     <% end %>
   </div>
-
 
 
   <br>
