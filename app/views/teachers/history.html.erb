@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="row">
+        <div class="col-xs-12">
+          <h3><strong>MON COMPTE</strong></h3>
+        </div>
+        <div class="col-xs-12 navbar_learner hvr-fade">
+          <%= link_to 'Mon planning', teacher_path(@teacher) %>
+        </div>
+        <div class="col-xs-12 navbar_learner hvr-fade">
+          <%= link_to 'Historique de mes leçon', teacher_history_path(@teacher) %>
+        </div>
+        <div class="col-xs-12 navbar_learner hvr-fade">
+          <%= link_to "Mes disponibilité", teacher_add_availability_path(@teacher) %>
+        </div>
+        <div class="col-xs-12 navbar_learner hvr-fade">
+          <%= link_to 'Données personnelles', edit_teacher_registration_path %>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-6 hvr-glow">
+        <h3 class="text-center"> <strong> Mes heures de conduite </strong></h3>
+        <% @learners.each do |learner| %>
+        <% if learner.first_name == "" %>
+        <% else %>
+        <div class="row hour_booked">
+          <div class="col-xs-9">
+            <p class="text-left"> <strong> Cours de conduite </strong> </p>
+            <p class="text-center"> <strong><%= learner.first_name %> </strong> </p>
+          </div>
+        </div>
+      <% end %>
+
+    <% end %>
+
+    </div>
+  </div>
+</div>

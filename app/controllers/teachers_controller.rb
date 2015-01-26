@@ -16,7 +16,22 @@ class TeachersController < ApplicationController
     redirect_to teachers_path
   end
 
+  def show
+      @availabilities = @teacher.availabilities
+    #   if @learner.school.nil?
+
+    #   else
+    #   @teachers = @learner.school.teachers
+    # end
+  end
+
   def destroy
+  end
+
+  def history
+    @teacher = Teacher.find(params[:teacher_id])
+    @availabilities = @teacher.availabilities
+    @learners = Learner.all
   end
 
   private
