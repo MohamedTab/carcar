@@ -1,3 +1,6 @@
+<% if learner_signed_in? %>
+
+
 <div class="container">
   <div class="row text-center">
     <div class="col-xs-12 text-center">
@@ -19,15 +22,15 @@
     </div>
   </div>
   <div class="row text-center">
-    <div class="calendar col-xs-12 text-center teachercalendar" >
+    <div class="col-xs-6 text-center teachercalendar" >
       <%= week_calendar do |date| %>
-      <div class="day text-center" style= "padding-top: 5px; height: 30px;">
+      <div class="day text-center" style= "padding-top: 5px;">
         <%= date.mday %>
       </div>
         <% (6..23).each do |hour| %>
           <% lesson = Lesson.new(starts_at: date + hour.hours, ends_at: date + hour.hours + 3600) %>
           <% availability = lesson.find_availability_for_teacher(params[:id]) %>
-          <div class="day" style="height: 30px;">
+          <div class="day hvr-fade" style="height: 30px;">
             <%= form_for([@teacher, lesson]) do |f| %>
               <%= f.hidden_field :starts_at %>
               <%= f.hidden_field :ends_at %>
@@ -50,10 +53,38 @@
   </div>
 </div>
 
-
 <br></br>
 <br>
+<% end %>
 
+<!-- Learner signed in end -->
+
+          <!-- TEACHER SIGNED IN  -->
+
+<% if teacher_signed_in? %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>MON COMPTE</h3>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xs-12 col-sm-4 navbar_learner hvr-fade">
+      <%= link_to 'Mon planning', teacher_path(@teacher) %>
+    </div>
+    <div class="col-xs-12 col-sm-4 navbar_learner hvr-underline-from-center">
+      <%= link_to 'Données personnells', edit_teacher_registration_path %>
+    </div>
+    <div class="col-xs-12 col-sm-4 navbar_learner hvr-underline-from-center">
+      <%= link_to 'Historique de mes leçon', edit_teacher_registration_path %>
+    </div>
+  </div>
+</div>
 
 <%= link_to "sign out", destroy_teacher_session_path, method: :delete, :class => "btn btn-primary" %>
 <%= link_to "Ajouter une disponibilité", teacher_add_availability_path(@teacher) %>
+
+
+<% end %>

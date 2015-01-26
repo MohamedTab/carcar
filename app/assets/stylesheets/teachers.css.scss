@@ -1,10 +1,17 @@
+.day {
+background-color: #222A2D;
+border-bottom: solid 1px #F0F1F5;
+width: 150px;
+color: #EF5C29;
+}
+
 .hour {
   background-color: #E0F7CC;
   padding: 5px 0px;
 }
 
 .calendar-hour {
-  width: 75px;
+  width: 30px;
   border: 1px solid #C7F1A3;
 }
 
