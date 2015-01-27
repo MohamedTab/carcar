@@ -32,6 +32,7 @@ class TeachersController < ApplicationController
     @teacher = Teacher.find(params[:teacher_id])
     @availabilities = @teacher.availabilities
     @learners = Learner.all
+    @lessons = Lesson.all
   end
 
   private
