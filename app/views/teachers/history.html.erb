@@ -20,21 +20,44 @@
 
       </div>
     </div>
-    <div class="col-xs-12 col-sm-offset-1 col-sm-6 hvr-glow">
+    <div class="col-xs-12 col-sm-offset-1 col-sm-6">
         <h3 class="text-center"> <strong> Mes heures de conduite </strong></h3>
         <% @learners.each do |learner| %>
-        <% if learner.first_name == "" %>
-        <% else %>
-        <div class="row hour_booked">
-          <div class="col-xs-9">
-            <p class="text-left"> <strong> Cours de conduite </strong> </p>
-            <p class="text-center"> <strong><%= learner.first_name %> </strong> </p>
+          <div class="col-xs-12 teacher_show_learner  hvr-glow">
+            <div class="row">
+              <div class="col-xs-4 text-center">
+                <%= image_tag learner.picture.url(:thumb) %>
+              </div>
+              <div class="col-xs-8">
+                <div class="row">
+                  <div class="col-xs-12", style="background-color: #313030; margin-left: 2px; padding-right: 0px; color: white;">
+                    <strong><%= learner.first_name %> <%= learner.last_name %></strong>
+                  </div>
+                  <div class="col-xs-12">
+                    <p style="text-decoration: underline;"> <strong> Nombre d'heures effetuées : </strong></p>
+                  </div>
+                  <div class="col-xs-12">
+
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target='<%= "#collapse_#{learner.id}" %>' aria-expanded="false" aria-controls="collapseExample">
+                      Commenter
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="collapse" id='<%= "collapse_#{learner.id}" %>' style="padding-top: 10px;">
+                  <div class="well">
+                    <p> <strong> Laisse votre commentaire </strong></p>
+                    <textarea class="form-control" rows="4"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      <% end %>
-
-    <% end %>
-
+        <% end %>
     </div>
   </div>
 </div>
+
+
+
