@@ -65,9 +65,13 @@
             <p class="text-right">Moniteur: <strong> <%= lesson.availability.teacher.name %></strong> </p>
           </div>
           <div class="col-xs-4 border_between_date_btn">
+            <% if Time.now + 172800 <= lesson.starts_at %>
             <div class="btn btn-danger btn_cancel", style="color: white;">
              <%= link_to 'Annuler', lesson, method: :delete, alert: { confirm: 'Are you sure?' }, style: "color: white;" %>
             </div>
+            <% else %>
+              <p class="text-center" style="color: red;"><strong>Délai d'annulation dépassé</strong></p>
+            <% end %>
           </div>
         </div>
         <% end %>
