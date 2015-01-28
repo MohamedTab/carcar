@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="row">
+        <div class="col-xs-12">
+          <h3><strong>MON COMPTE</strong></h3>
+        </div>
+        <div class="col-xs-12 navbar_learner hvr-fade">
+          <%= link_to 'Mon planning', teacher_path(@teacher) %>
+        </div>
+        <div class="col-xs-12 navbar_learner hvr-fade">
+          <%= link_to 'Historique de mes leçon', teacher_history_path(@teacher) %>
+        </div>
+        <div class="col-xs-12 navbar_learner hvr-fade">
+          <%= link_to "Mes disponibilité", teacher_add_availability_path(@teacher) %>
+        </div>
+        <div class="col-xs-12 navbar_learner hvr-fade">
+          <%= link_to 'Données personnelles', edit_teacher_registration_path %>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-6">
+        <h3 class="text-center"> <strong> Mes heures de conduite </strong></h3>
+        <% @learners.each do |learner| %>
+          <div class="col-xs-12 teacher_show_learner  hvr-glow">
+            <div class="row">
+              <div class="col-xs-4 text-center">
+                <%= image_tag learner.picture.url(:thumb) %>
+              </div>
+              <div class="col-xs-8">
+                <div class="row">
+                  <div class="col-xs-12", style="background-color: #313030; margin-left: 2px; padding-right: 0px; color: white;">
+                    <strong><%= learner.first_name %> <%= learner.last_name %></strong>
+                  </div>
+                  <div class="col-xs-12">
+                    <p style="text-decoration: underline;"> <strong> Nombre d'heures effetuées : </strong></p>
+
+
+
+                  </div>
+                  <div class="col-xs-12">
+
+                    <button class="btn btn-primary hvr-icon-hang" type="button" data-toggle="collapse" data-target='<%= "#collapse_#{learner.id}" %>' aria-expanded="false" aria-controls="collapseExample">
+                      <strong> Voir les cours </strong>
+                    </button>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="collapse" id='<%= "collapse_#{learner.id}" %>' style="padding-top: 10px;">
+                  <div class="well">
+                  <% lessons = learner.lessons %>
+
+                  <% lessons.each do |lesson| %>
+                  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                      <div class="panel-heading" role="tab" id='<%= "heading_#{lesson.id}" %>'>
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href='<%= "#collapse_#{lesson.id}" %>' aria-expanded="true" aria-controls="collapseOne">
+                               <strong> Cours du <%= lesson.starts_at.day%>/<%= lesson.starts_at.month%>/<%= lesson.starts_at.year%> <%= lesson.starts_at.hour%>h à <%= lesson.ends_at.hour%>h </strong>
+                          </a>
+                        </h4>
+                      </div>
+                      <div id='<%= "collapse_#{lesson.id}" %>' class="panel-collapse collapse in" role="tabpanel" aria-labelledby='<%= "heading_#{lesson.id}" %>'>
+                        <div class="panel-body">
+                        <p> <strong> Laisse votre commentaire </strong></p>
+                        <textarea class="form-control" rows="4"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+
+
+                    <% end %>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
+
