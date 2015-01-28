@@ -35,6 +35,10 @@ class TeachersController < ApplicationController
     @lessons = Lesson.all
   end
 
+  def add_availability
+    @teacher = Teacher.find(params[:teacher_id])
+  end
+
   private
 
   def set_school

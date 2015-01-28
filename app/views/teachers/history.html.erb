@@ -41,9 +41,10 @@
                   </div>
                   <div class="col-xs-12">
 
-                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target='<%= "#collapse_#{learner.id}" %>' aria-expanded="false" aria-controls="collapseExample">
-                      Commenter
+                    <button class="btn btn-primary hvr-icon-hang" type="button" data-toggle="collapse" data-target='<%= "#collapse_#{learner.id}" %>' aria-expanded="false" aria-controls="collapseExample">
+                      <strong> Voir les cours </strong>
                     </button>
+
                   </div>
                 </div>
               </div>
@@ -58,7 +59,7 @@
                       <div class="panel-heading" role="tab" id='<%= "heading_#{lesson.id}" %>'>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href='<%= "#collapse_#{lesson.id}" %>' aria-expanded="true" aria-controls="collapseOne">
-                                              <strong> <%= lesson.starts_at.hour%>h à <%= lesson.ends_at.hour%>h </strong>
+                               <strong> Cours du <%= lesson.starts_at.day%>/<%= lesson.starts_at.month%>/<%= lesson.starts_at.year%> <%= lesson.starts_at.hour%>h à <%= lesson.ends_at.hour%>h </strong>
                           </a>
                         </h4>
                       </div>
