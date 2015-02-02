@@ -5,11 +5,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 private
-  def after_sign_in_path_for(teacher)
-    teacher_path(teacher)
-  end
 
-  def after_sign_in_path_for(learner)
-    learner_path(learner)
-  end
+
+ # def after_sign_in_path_for(learner)
+ #    learner_path(learner)
+ #  end
+
+
+  #   def after_sign_in_path_for(teacher)
+  #   teacher_path(teacher)
+  # end
+
 end
