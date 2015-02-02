@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129152137) do
+ActiveRecord::Schema.define(version: 20150202103759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 20141129152137) do
   end
 
   add_index "availabilities", ["teacher_id"], name: "index_availabilities_on_teacher_id", using: :btree
+
+  create_table "comments", force: true do |t|
+    t.integer  "lesson_id"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["lesson_id"], name: "index_comments_on_lesson_id", using: :btree
 
   create_table "learners", force: true do |t|
     t.string   "email",                  default: "", null: false
