@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  skip_before_action :authenticate_learner!
+  skip_before_action :authenticate_teacher!
   def index
     if params[:locality]
       @schools = School.search(params[:locality])

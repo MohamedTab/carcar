@@ -1,4 +1,5 @@
 class SchoolsController < ApplicationController
+  before_action :authenticate_teacher!
   before_action :set_school, only: [:show, :edit, :update, :destroy]
   def index
     if params[:locality]

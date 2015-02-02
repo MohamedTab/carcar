@@ -8,7 +8,7 @@ class LessonsController < InheritedResources::Base
         lesson.save
         redirect_to learner_path(current_learner)
       else
-        flash[:error] = "Sa marsh pa lol NEGER"
+        flash[:error] = "ERROR"
         redirect_to learner_path(current_learner)
       end
     else
@@ -16,7 +16,7 @@ class LessonsController < InheritedResources::Base
         lesson.save
         redirect_to  school_dashboard_path
       else
-        flash[:error] = "Sa marsh pa lol NEGER"
+        flash[:error] = "ERROR"
         redirect_to school_dashboard_path(current_learner)
       end
     end

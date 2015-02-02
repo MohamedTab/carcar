@@ -1,9 +1,8 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_teacher!
 
   def create
-    # current_teacher.availabilities.create(availability_params)
     @comment = Comment.new(comment_params)
-    # @comment[:teacher_id] = current_teacher.id
     @comment.save
     redirect_to teacher_path(current_teacher)
   end
