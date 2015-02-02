@@ -29,7 +29,11 @@ get '/about_us' => 'home#about_us', as: :about_us
 
 
   resources :teachers do
-      get '/teachers' => 'teachers#add_availability', as: :add_availability
+
+    get '/teachers' => 'teachers#add_availability', as: :add_availability
+      get '/history' => 'teachers#history', as: :history
+
+
 
       resources :lessons, only: [:create]
   end

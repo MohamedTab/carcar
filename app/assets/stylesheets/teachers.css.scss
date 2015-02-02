@@ -1,10 +1,17 @@
+.day {
+background-color: #222A2D;
+border-bottom: solid 1px #F0F1F5;
+width: 107px;
+color: #EF5C29;
+}
+
 .hour {
   background-color: #E0F7CC;
   padding: 5px 0px;
 }
 
 .calendar-hour {
-  width: 75px;
+  width: 30px;
   border: 1px solid #C7F1A3;
 }
 
@@ -49,6 +56,7 @@ body > div.calendar.col-xs-12.text-center.teachercalendar > header {
 
 body > div.calendar.col-xs-12.text-center.teachercalendar > header > a, span {
   font-size: 25px;
+  font-weight: bold;
   color: black;
 }
 
@@ -64,3 +72,42 @@ body > div.container > div.col-xs-12.col-sm-8.text-center {
   border-radius: 10px;
 }
 
+.hvr-icon-hang {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  padding-right: 2.2em;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.hvr-icon-hang:before {
+  content: "\f078";
+  position: absolute;
+  right: 1em;
+  padding: 0 1px;
+  font-family: FontAwesome;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.hvr-icon-hang:hover:before, .hvr-icon-hang:focus:before, .hvr-icon-hang:active:before {
+  -webkit-animation-name: hvr-icon-hang-sink, hvr-icon-hang;
+  animation-name: hvr-icon-hang-sink, hvr-icon-hang;
+  -webkit-animation-duration: .3s, 1.5s;
+  animation-duration: .3s, 1.5s;
+  -webkit-animation-delay: 0s, .3s;
+  animation-delay: 0s, .3s;
+  -webkit-animation-timing-function: ease-out, ease-in-out;
+  animation-timing-function: ease-out, ease-in-out;
+  -webkit-animation-iteration-count: 1, infinite;
+  animation-iteration-count: 1, infinite;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-direction: normal, alternate;
+  animation-direction: normal, alternate;
+}
