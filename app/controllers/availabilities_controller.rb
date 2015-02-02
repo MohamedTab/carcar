@@ -1,4 +1,5 @@
 class AvailabilitiesController < ApplicationController
+   before_action :authenticate_teacher!
   def create
     # current_teacher.availabilities.create(availability_params)
     @availability = Availability.new(availability_params)

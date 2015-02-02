@@ -1,4 +1,5 @@
 class LearnersController < ApplicationController
+   before_action :authenticate_learner!
     before_action :set_learner, only: [:show, :edit, :update, :destroy]
   def index
 
