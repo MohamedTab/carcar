@@ -66,42 +66,41 @@
                       </div>
                       <div id='<%= "collapse_#{lesson.id}" %>' class="panel-collapse collapse in" role="tabpanel" aria-labelledby='<%= "heading_#{lesson.id}" %>'>
                         <div class="panel-body">
-                        <p> <strong> Laisse votre commentaire </strong></p>
 
                         <% comments = Comment.where(lesson_id: lesson.id) %>
                         <% if comments.nil? %>
 
                         <% else %>
 
-                        <% comments.each do |comment| %>
-                        <div>
-                          <%= comment.description %>
-                        </div>
+                          <% comments.each do |comment| %>
+
+                            <p> <strong> Commentaire du <%= comment.created_at.to_formatted_s(:short) %> </strong> <%= link_to 'Supprimer', comment, method: :delete, alert: { confirm: 'Are you sure?' }, style: "color: white;", class: "btn btn-danger" %></p>
+                            <div style="border: 1px solid grey; background-color: white; border-radius: 5px; padding: 15px 20px; margin-bottom: 15px;">
+                              <%= comment.description %>
+                            </div>
+
+                          <% end %>
                         <% end %>
 
-                        <% end %>
+
+                        <!-- FORM ADD COMMENT -->
 
                         <%= form_for(Comment.new) do |f| %>
                             <div class="field">
-                            <%= f.hidden_field :lesson_id, :value => lesson.id %>
-                          </div>
+                              <%= f.hidden_field :lesson_id, :value => lesson.id %>
+                            </div>
                           <div class="field">
-                            <%= f.label :description%><br>
-                            <%= f.text_field :description %>
+                            <%= f.label :description, "Nouveau message" %><br>
+                            <%= f.text_area :description, :rows => 4, class: "form-control", :placeholder => 'Enter votre message...' %><br>
                           </div>
                           <div class="actions">
-                            <%= f.submit %>
+                            <%= f.submit "commenter", class: "btn btn-success" %>
                           </div>
-                              <% end %>
+                        <% end %>
 
 
+                        <!-- FORM ADD COMMENT -->
 
-
-
-
-
-
-                       <!--  <textarea class="form-control" rows="4"></textarea> -->
                         </div>
                       </div>
                     </div>
