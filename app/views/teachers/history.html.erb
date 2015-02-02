@@ -67,18 +67,47 @@
                       <div id='<%= "collapse_#{lesson.id}" %>' class="panel-collapse collapse in" role="tabpanel" aria-labelledby='<%= "heading_#{lesson.id}" %>'>
                         <div class="panel-body">
                         <p> <strong> Laisse votre commentaire </strong></p>
-                        <textarea class="form-control" rows="4"></textarea>
+
+                        <% comments = Comment.where(lesson_id: lesson.id) %>
+                        <% if comments.nil? %>
+
+                        <% else %>
+
+                        <% comments.each do |comment| %>
+                        <div>
+                          <%= comment.description %>
+                        </div>
+                        <% end %>
+
+                        <% end %>
+
+                        <%= form_for(Comment.new) do |f| %>
+                            <div class="field">
+                            <%= f.hidden_field :lesson_id, :value => lesson.id %>
+                          </div>
+                          <div class="field">
+                            <%= f.label :description%><br>
+                            <%= f.text_field :description %>
+                          </div>
+                          <div class="actions">
+                            <%= f.submit %>
+                          </div>
+                              <% end %>
+
+
+
+
+
+
+
+
+                       <!--  <textarea class="form-control" rows="4"></textarea> -->
                         </div>
                       </div>
                     </div>
                   </div>
 
-
-
-
-
-
-                    <% end %>
+                  <% end %>
 
                   </div>
                 </div>
