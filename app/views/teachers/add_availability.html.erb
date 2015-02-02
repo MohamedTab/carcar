@@ -1,13 +1,39 @@
-<%= form_for(Availability.new) do |f| %>
-    <div class="field">
-    <%= f.label :starts_at %><br>
-    <%= f.datetime_select :starts_at %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="row">
+        <div class="col-xs-12">
+          <h3><strong>MON COMPTE</strong></h3>
+        </div>
+        <div class="col-xs-12 navbar_learner hvr-fade">
+          <%= link_to 'Mon planning', teacher_path(@teacher) %>
+        </div>
+        <div class="col-xs-12 navbar_learner hvr-fade">
+          <%= link_to 'Dossier des élèves', teacher_history_path(@teacher) %>
+        </div>
+        <div class="col-xs-12 navbar_learner hvr-fade">
+          <%= link_to "Mes disponibilité", teacher_add_availability_path(@teacher) %>
+        </div>
+        <div class="col-xs-12 navbar_learner hvr-fade">
+          <%= link_to 'Données personnelles', edit_teacher_registration_path %>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-6">
+      <%= form_for(Availability.new) do |f| %>
+          <div class="field">
+          <%= f.label :starts_at %><br>
+          <%= f.datetime_select :starts_at, :minute_step => 60  %>
+        </div>
+        <div class="field">
+          <%= f.label :ends_at %><br>
+          <%= f.datetime_select :ends_at, :minute_step => 30 %>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+            <% end %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :ends_at %><br>
-    <%= f.datetime_select :ends_at %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-      <% end %>
+</div>

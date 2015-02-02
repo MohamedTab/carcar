@@ -22,6 +22,15 @@ class LessonsController < InheritedResources::Base
     end
   end
 
+  def destroy
+    lesson = Lesson.find(params[:id])
+    lesson.destroy
+    redirect_to learner_path(current_learner)
+  end
+
+  def edit
+    @lesson = Lesson.find(params[:id])
+  end
 
   private
 

@@ -1,53 +1,109 @@
+<% if learner_signed_in? %>
+
+
+
 <div class="container">
-  <div class="col-xs-12 text-center">
-    <h1>Profil de <%= @teacher.name %></h1>
-  </div>
-  <div class="col-xs-12 col-sm-4 row">
-    <div class="teacher text-center">
-      <%= image_tag @teacher.picture.url(:medium) %>
-      <h3><%= @teacher.name %></h3>
-      <p><%= @teacher.email%></p>
+  <div class="row">
+      <div class="col-xs-12 text-center", style="padding-bottom: 20px;">
+      <h1> <strong> Reserver une heure de conduite avec <%= @teacher.name %> </strong></h1>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="row">
+        <div class="col-xs-12 text-center">
+        <%= image_tag @teacher.picture.url(:medium) %>
+        <h3><strong><%= @teacher.name %></strong></h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-8 text-center teachercalendar">
+      <%= week_calendar do |date| %>
+      <div class="day text-center" style= "padding-top: 5px;">
+        <%= date.mday %>
+      </div>
+        <% (8..19).each do |hour| %>
+          <% lesson = Lesson.new(starts_at: date + hour.hours, ends_at: date + hour.hours + 3600) %>
+          <% availability = lesson.find_availability_for_teacher(params[:id]) %>
+          <div class="day hvr-fade" style="height: 30px;">
+            <%= form_for([@teacher, lesson]) do |f| %>
+              <%= f.hidden_field :starts_at %>
+              <%= f.hidden_field :ends_at %>
+              <%= f.hidden_field :availability_id %>
+                <% if availability.nil? && (date + hour.hours < Time.now) %>
+                  <% teacher_path(params[:id]) %>
+                <% elsif availability.nil? && (date + hour.hours >= Time.now) %>
+                  <p style="color: #868686;"> <%= hour %>h - <%= hour + 1 %>h </p>
+                  <% teacher_path(params[:id]) %>
+                <% elsif availability.lesson_booked?(lesson.starts_at, lesson.ends_at) == false && date + hour.hours > Time.now %>
+                   <%= f.submit "#{hour}h - #{hour + 1} h", :class => 'btn btn-link' %>
+                <% elsif availability.lesson_booked?(lesson.starts_at, lesson.ends_at) && (date + hour.hours >= Time.now)  %>
+                    <p> Booked </p>
+                <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
-  <div class="col-xs-12 col-sm-8 text-center">
-    <h3>Mes lessons</h3>
-    mettres le tableau des leçons
-  </div>
 </div>
 
+<br></br>
+<br>
+<% end %>
+
+<!-- Learner signed in end -->
+
+          <!-- TEACHER SIGNED IN  -->
+
+<% if teacher_signed_in? %>
 
 
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="row">
+        <div class="col-xs-12">
+          <h3><strong>MON COMPTE</strong></h3>
+        </div>
+        <div class="col-xs-12 navbar_learner hvr-fade">
+          <%= link_to 'Mon planning', teacher_path(@teacher) %>
+        </div>
+        <div class="col-xs-12 navbar_learner hvr-fade">
+          <%= link_to 'Dossier des élèves', teacher_history_path(@teacher) %>
+        </div>
+        <div class="col-xs-12 navbar_learner hvr-fade">
+          <%= link_to "Mes disponibilité", teacher_add_availability_path(@teacher) %>
+        </div>
+        <div class="col-xs-12 navbar_learner hvr-fade">
+          <%= link_to 'Données personnelles', edit_teacher_registration_path %>
+        </div>
 
-<div class="col-xs-12 text-center">
-<h3> Ses disponibilités </h3>
-</div>
-
-
-
-<div class="calendar col-xs-12 text-center teachercalendar" >
-  <%= week_calendar do |date| %>
-    <%= date.mday %>
-    <% (6..23).each do |hour| %>
-      <% lesson = Lesson.new(starts_at: date + hour.hours, ends_at: date + hour.hours + 3600) %>
-      <% availability = lesson.find_availability_for_teacher(params[:id]) %>
-      <div class="form_booking">
-      <%= form_for([@teacher, lesson]) do |f| %>
-        <%= f.hidden_field :starts_at %>
-        <%= f.hidden_field :ends_at %>
-        <%= f.hidden_field :availability_id %>
-        <% if availability.nil? && (date + hour.hours < Time.now) %>
-          <% teacher_path(params[:id]) %>
-        <% elsif availability.nil? && (date + hour.hours >= Time.now) %>
-          <%= hour %>h - <%= hour + 1 %>h
-          <% teacher_path(params[:id]) %>
-        <% elsif availability.lesson_booked?(lesson.starts_at, lesson.ends_at) == false && date + hour.hours > Time.now %>
-            <%= f.submit "#{hour}h - #{hour + 1} h", :class => 'btn btn-link' %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-6 hvr-glow">
+      <div>
+        <h3 class="text-center"> <strong> Mes heures de conduite </strong></h3>
+      </div>
+    <% @availabilities.each do |availability| %>
+      <% availability.lessons.each do |lesson| %>
+        <% if lesson.starts_at >= Time.now %>
+        <div class="row hour_booked">
+          <div class="col-xs-9">
+            <p class="text-left"> <strong> Cours de conduite </strong> </p>
+            <p class="text-center"> <strong><%= lesson.starts_at %> de <%= "#{lesson.starts_at.hour}h - #{lesson.ends_at.hour}h" %> </strong> </p>
+            <p class="text-right">Eleve: <strong> <%= image_tag lesson.learner.picture.url(:thumb), id: "profile-pic" %> <%= lesson.learner.first_name %> <%= lesson.learner.last_name %></strong> </p>
+          </div>
+          <div class="col-xs-3 border_between_date_btn">
+            <div class="btn btn-danger btn_cancel", style="color: white;">
+             <%= link_to 'Annuler', lesson, method: :delete, alert: { confirm: 'Are you sure?' }, style: "color: white;" %>
+            </div>
+          </div>
+        </div>
         <% end %>
       <% end %>
     <% end %>
-  <% end %>
+
+
+    </div>
+  </div>
 </div>
-
-
-<%= link_to "sign out", destroy_teacher_session_path, method: :delete %>
-<%= link_to "Ajouter une disponibilité", teacher_add_availability_path(@teacher) %>
+<% end %>

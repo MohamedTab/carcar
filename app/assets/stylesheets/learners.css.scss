@@ -4,38 +4,9 @@
 }
 
 
-.calendar-header {
-  width: 525px;
-  padding: 10px 0px;
-  text-align: center;
-  background-color: #F57745;
-  color: white;
-}
-
-.calendar-header > a {
-  color :white;
-}
-
 th {
   text-align: center;
 }
-
-.day {
-  text-align: center;
-  background-color: #E0F7CC;
-  border: solid 1px #C7F1A3;
-  width: 150px;
-  height: 75px;
-}
-
-.day_a {
-  text-align: center;
-  background-color: red;
-  border: solid 1px #C7F1A3;
-  width: 150px;
-  height: 75px;
-}
-
 
 .hour {
   background-color: #E0F7CC;
@@ -78,6 +49,9 @@ th {
   margin-left: 1200px;
 }
 
+.btn-link {
+  color: white;
+}
 
 .hour_booked {
   padding-top: 10px;
@@ -245,5 +219,3 @@ th {
   background-color: #EC971F;
   color: white;
 }
-
-
