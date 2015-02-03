@@ -36,7 +36,7 @@
                   <% (6..23).each do |hour| %>
                     <% lesson = Lesson.new(starts_at: date + hour.hours, ends_at: date + hour.hours + 3600) %>
                     <% availability = lesson.find_availability_for_teacher(teacher.id) %>
-                    <%= form_for([@teacher, lesson]) do |f| %>
+                    <%= form_for([teacher, lesson]) do |f| %>
                       <%= f.hidden_field :starts_at %>
                       <%= f.hidden_field :ends_at %>
                       <%= f.hidden_field :availability_id %>

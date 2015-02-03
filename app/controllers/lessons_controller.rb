@@ -11,6 +11,18 @@ class LessonsController < InheritedResources::Base
         flash[:error] = "ERROR"
         redirect_to learner_path(current_learner)
       end
+    elsif teacher_signed_in?
+
+      lesson = Lesson.new(lesson_params)
+
+      if lesson.find_availability_for_teacher(teacher_id)
+        lesson.save
+        redirect_to learner_path(current_learner)
+      else
+        flash[:error] = "ERROR"
+        redirect_to teacher_path(current_teacher)
+      end
+
     else
       if lesson.find_availability_for_teacher(teacher_id)
         lesson.save
